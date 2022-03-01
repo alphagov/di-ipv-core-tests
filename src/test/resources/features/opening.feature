@@ -1,4 +1,3 @@
-
 Feature: PYI_Core UI Flow
   @smoke
   @scenario_1
@@ -12,10 +11,3 @@ Feature: PYI_Core UI Flow
      Given user is on Prove Your Identity page
      When user clicks on Open Government Licence hyperlink
      Then user is is Open Government Licence page
-
-#   @testing_firefox
-#    Scenario: Testing firefox
-#      Given user is in firefox page
-#      When user chooses PYI
-#      Then user is on core page
-

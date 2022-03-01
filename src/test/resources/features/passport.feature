@@ -1,6 +1,6 @@
 Feature: Passport Test
-  //@smoke
-  @passport_test
+
+@passport_test
 Scenario Outline: Passport details page
   Given user is on Prove Your Identity page
   When user clicks on Prove Your Identity button

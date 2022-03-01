@@ -14,7 +14,7 @@ public class OpeningPageSteps {
     @Given("user is on Prove Your Identity page")
     public void user_is_on_Prove_Your_Identity_page() {
         Driver.get().get(ConfigurationReader.get("url"));
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitForPageToLoad(2);
 
     }
 
@@ -22,7 +22,7 @@ public class OpeningPageSteps {
     public void user_clicks_on_Prove_Your_Identity_button() {
         OpeningPage openingPage = new OpeningPage();
         openingPage.ProveYourIdentityButton.click();
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitForPageToLoad(2);
     }
 
     @Then("user is on Credential Issuer page")
@@ -38,8 +38,7 @@ public class OpeningPageSteps {
     @When("user clicks on Open Government Licence hyperlink")
     public void user_clicks_on_Open_Government_Licence_hyperlink() {
         new OpeningPage().OpenGovernmentLicenceHyperlink.click();
-        BrowserUtils.waitFor(2);
-    }
+        BrowserUtils.waitForPageToLoad(5);   }
 
     @Then("user is is Open Government Licence page")
     public void user_is_is_Open_Government_Licence_page() {
@@ -51,13 +50,13 @@ public class OpeningPageSteps {
     @Given("user is in firefox page")
     public void user_is_in_firefox_page() {
         Driver.get().get(ConfigurationReader.get("url"));
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitForPageToLoad(2);
     }
 
     @When("user chooses PYI")
     public void user_chooses_PYI() {
         new OpeningPage().ProveYourIdentityButton.click();
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitForPageToLoad(1);
     }
     @Then("user is on core page")
     public void user_is_on_core_page() {
