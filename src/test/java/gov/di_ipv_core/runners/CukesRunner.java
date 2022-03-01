@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         glue = "gov/di_ipv_core/step_definitions",
         strict = true,
         dryRun = false,
-        tags = "@scenario_1"
+        tags = "@you_have_created_gov.uk_account_test"
 )
 public class CukesRunner {
 }
