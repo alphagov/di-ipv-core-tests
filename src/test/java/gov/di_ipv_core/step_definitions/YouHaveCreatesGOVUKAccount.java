@@ -23,12 +23,11 @@ public class YouHaveCreatesGOVUKAccount {
     public void user_clicks_on_Continue_button() {
         new YouHaveCreatedGOVUKAccountPage().Continue.click();
         BrowserUtils.waitForPageToLoad(5);
-        System.out.println("tbi");}
+    }
 
     @Then("user is on Enter your details exactly as they appear on your UK passport page")
     public void user_is_on_Enter_your_details_exactly_as_they_appear_on_your_UK_passport_page() {
         Assert.assertTrue(new EnterYourDetailsExactlyPage().PassportNumber.isDisplayed());
-        System.out.println("tbi");
     }
 
 
