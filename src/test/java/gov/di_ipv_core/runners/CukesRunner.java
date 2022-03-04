@@ -11,8 +11,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/",
         glue = "gov/di_ipv_core/step_definitions",
         strict = true,
-        dryRun = false,
-        tags = "@scenario_1"
+        dryRun = false
 )
 public class CukesRunner {
 }
