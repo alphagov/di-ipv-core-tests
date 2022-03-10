@@ -1,0 +1,37 @@
+package gov.di_ipv_core.POJO;
+
+import java.util.ArrayList;
+
+public class Names {
+    private String familyName;
+    private ArrayList<String> givenNames;
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    @Override
+    public String toString() {
+        return "Names{" +
+                "familyName='" + familyName + '\'' +
+                ", givenNames=" + givenNames +
+                '}';
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public ArrayList<String> getGivenNames() {
+        return givenNames;
+    }
+
+    public void setGivenNames(ArrayList<String> givenNames) {
+        this.givenNames = givenNames;
+    }
+
+    public Names(String familyName, ArrayList<String> givenNames) {
+        this.familyName = familyName;
+        this.givenNames = givenNames;
+    }
+}
