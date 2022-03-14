@@ -1,13 +1,11 @@
 package gov.di_ipv_core.POJO;
 
 public class CodeRoot {
+
     private Code code;
 
-    @Override
-    public String toString() {
-        return "CodeRoot{" +
-                "code=" + code +
-                '}';
+    public CodeRoot(Code code) {
+        this.code = code;
     }
 
     public Code getCode() {
@@ -18,7 +16,11 @@ public class CodeRoot {
         this.code = code;
     }
 
-    public CodeRoot(Code code) {
-        this.code = code;
+    @Override
+    public String toString() {
+        return "CodeRoot{" +
+                "code=" + code +
+                '}';
     }
+
 }

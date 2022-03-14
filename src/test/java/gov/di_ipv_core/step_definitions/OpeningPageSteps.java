@@ -63,6 +63,4 @@ public class OpeningPageSteps {
         System.out.println("User is on Core page");
     }
 
-
-
 }

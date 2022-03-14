@@ -3,20 +3,16 @@ package gov.di_ipv_core.POJO;
 import java.util.ArrayList;
 
 public class Names {
+
     private String familyName;
     private ArrayList<String> givenNames;
 
-    public String getFamilyName() {
-        return familyName;
+    public Names(String familyName, ArrayList<String> givenNames) {
+        this.familyName = familyName;
+        this.givenNames = givenNames;
     }
 
-    @Override
-    public String toString() {
-        return "Names{" +
-                "familyName='" + familyName + '\'' +
-                ", givenNames=" + givenNames +
-                '}';
-    }
+    public String getFamilyName() {return familyName;}
 
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
@@ -30,8 +26,12 @@ public class Names {
         this.givenNames = givenNames;
     }
 
-    public Names(String familyName, ArrayList<String> givenNames) {
-        this.familyName = familyName;
-        this.givenNames = givenNames;
+    @Override
+    public String toString() {
+        return "Names{" +
+                "familyName='" + familyName + '\'' +
+                ", givenNames=" + givenNames +
+                '}';
     }
+
 }

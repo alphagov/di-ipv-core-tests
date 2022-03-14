@@ -1,19 +1,16 @@
 package gov.di_ipv_core.POJO;
 
 public class Evidence{
+
     private int strength;
+    private int validity;
 
-    public int getStrength() {
-        return strength;
+    public Evidence(int strength, int validity) {
+        this.strength = strength;
+        this.validity = validity;
     }
 
-    @Override
-    public String toString() {
-        return "Evidence{" +
-                "strength=" + strength +
-                ", validity=" + validity +
-                '}';
-    }
+    public int getStrength() {return strength;}
 
     public void setStrength(int strength) {
         this.strength = strength;
@@ -27,10 +24,12 @@ public class Evidence{
         this.validity = validity;
     }
 
-    public Evidence(int strength, int validity) {
-        this.strength = strength;
-        this.validity = validity;
+    @Override
+    public String toString() {
+        return "Evidence{" +
+                "strength=" + strength +
+                ", validity=" + validity +
+                '}';
     }
 
-    private int validity;
 }

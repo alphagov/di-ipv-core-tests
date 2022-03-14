@@ -1,6 +1,7 @@
 package gov.di_ipv_core.step_definitions;
 
-import gov.di_ipv_core.POJO.*;
+import gov.di_ipv_core.POJO.PassportCheckResult;
+import gov.di_ipv_core.POJO.CodeRoot;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,6 +25,7 @@ public class PassportAPISteps {
     String client_id = "ipv-core-stub";
     String accessToken;
     boolean validMessage;
+    int validityValue;
     String requestBody = "{\n" +
             "  \"passportNumber\": \"824159121\",\n" +
             "  \"surname\": \"Watson\",\n" +
@@ -73,15 +75,17 @@ public class PassportAPISteps {
                 .header("Authorization", "Bearer " + accessToken)
                 .when().get(credentialGetUrl);
 
-        Root root = credentialResponse.body().as(Root.class);
-        validMessage = root.getAttributes().getDcsResponse().isValid();
-
+        PassportCheckResult result = credentialResponse.body().as(PassportCheckResult.class);
+        validMessage = result.getAttributes().getDcsResponse().isValid();
+        validityValue = result.getGpg45Score().getEvidence().getValidity();
     }
 
-    @Then("I should get passport valid message")
-    public void i_should_get_passport_valid_message() {
+    @Then("I should get passport valid message and validity value must be 2")
+    public void i_should_get_passport_valid_message_and_validity_value_must_be_2 () {
         Assert.assertTrue(validMessage);
         System.out.println("validMessage = " + validMessage);
+        Assert.assertEquals(2,validityValue);
+        System.out.println("validityValue = " + validityValue);
     }
 
 }

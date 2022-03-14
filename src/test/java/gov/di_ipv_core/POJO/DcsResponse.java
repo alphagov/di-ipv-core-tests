@@ -1,18 +1,19 @@
 package gov.di_ipv_core.POJO;
 
-
 public class DcsResponse{
-    private String correlationId;
 
-    @Override
-    public String toString() {
-        return "DcsResponse{" +
-                "correlationId='" + correlationId + '\'' +
-                ", requestId='" + requestId + '\'' +
-                ", error=" + error +
-                ", valid=" + valid +
-                ", errorMessage=" + errorMessage +
-                '}';
+    private String correlationId;
+    private String requestId;
+    private boolean error;
+    private boolean valid;
+    private Object errorMessage;
+
+    public DcsResponse(String correlationId, String requestId, boolean error, boolean valid, Object errorMessage) {
+        this.correlationId = correlationId;
+        this.requestId = requestId;
+        this.error = error;
+        this.valid = valid;
+        this.errorMessage = errorMessage;
     }
 
     public String getCorrelationId() {
@@ -55,17 +56,15 @@ public class DcsResponse{
         this.errorMessage = errorMessage;
     }
 
-    private String requestId;
-    private boolean error;
-
-    public DcsResponse(String correlationId, String requestId, boolean error, boolean valid, Object errorMessage) {
-        this.correlationId = correlationId;
-        this.requestId = requestId;
-        this.error = error;
-        this.valid = valid;
-        this.errorMessage = errorMessage;
+    @Override
+    public String toString() {
+        return "DcsResponse{" +
+                "correlationId='" + correlationId + '\'' +
+                ", requestId='" + requestId + '\'' +
+                ", error=" + error +
+                ", valid=" + valid +
+                ", errorMessage=" + errorMessage +
+                '}';
     }
 
-    private boolean valid;
-    private Object errorMessage;
 }

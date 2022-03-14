@@ -1,22 +1,24 @@
 package gov.di_ipv_core.POJO;
 
 public class Attributes{
+
     private Names names;
-
-    @Override
-    public String toString() {
-        return "Attributes{" +
-                "names=" + names +
-                ", passportNumber='" + passportNumber + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", expiryDate='" + expiryDate + '\'' +
-                ", requestId='" + requestId + '\'' +
-                ", correlationId='" + correlationId + '\'' +
-                ", dcsResponse=" + dcsResponse +
-                '}';
-    }
-
     private String passportNumber;
+    private String dateOfBirth;
+    private String expiryDate;
+    private String requestId;
+    private String correlationId;
+    private DcsResponse dcsResponse;
+
+    public Attributes(Names names, String passportNumber, String dateOfBirth, String expiryDate, String requestId, String correlationId, DcsResponse dcsResponse) {
+        this.names = names;
+        this.passportNumber = passportNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.expiryDate = expiryDate;
+        this.requestId = requestId;
+        this.correlationId = correlationId;
+        this.dcsResponse = dcsResponse;
+    }
 
     public Names getNames() {
         return names;
@@ -74,20 +76,18 @@ public class Attributes{
         this.dcsResponse = dcsResponse;
     }
 
-    private String dateOfBirth;
-    private String expiryDate;
-    private String requestId;
 
-    public Attributes(Names names, String passportNumber, String dateOfBirth, String expiryDate, String requestId, String correlationId, DcsResponse dcsResponse) {
-        this.names = names;
-        this.passportNumber = passportNumber;
-        this.dateOfBirth = dateOfBirth;
-        this.expiryDate = expiryDate;
-        this.requestId = requestId;
-        this.correlationId = correlationId;
-        this.dcsResponse = dcsResponse;
+    @Override
+    public String toString() {
+        return "Attributes{" +
+                "names=" + names +
+                ", passportNumber='" + passportNumber + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", expiryDate='" + expiryDate + '\'' +
+                ", requestId='" + requestId + '\'' +
+                ", correlationId='" + correlationId + '\'' +
+                ", dcsResponse=" + dcsResponse +
+                '}';
     }
 
-    private String correlationId;
-    private DcsResponse dcsResponse;
 }
