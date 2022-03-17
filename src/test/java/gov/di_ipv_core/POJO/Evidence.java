@@ -5,6 +5,9 @@ public class Evidence{
     private int strength;
     private int validity;
 
+    public Evidence() {
+    }
+
     public Evidence(int strength, int validity) {
         this.strength = strength;
         this.validity = validity;

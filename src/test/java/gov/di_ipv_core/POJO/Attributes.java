@@ -10,6 +10,9 @@ public class Attributes{
     private String correlationId;
     private DcsResponse dcsResponse;
 
+    public Attributes() {
+    }
+
     public Attributes(Names names, String passportNumber, String dateOfBirth, String expiryDate, String requestId, String correlationId, DcsResponse dcsResponse) {
         this.names = names;
         this.passportNumber = passportNumber;

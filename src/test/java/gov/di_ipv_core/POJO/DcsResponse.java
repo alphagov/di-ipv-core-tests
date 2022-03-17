@@ -8,6 +8,9 @@ public class DcsResponse{
     private boolean valid;
     private Object errorMessage;
 
+    public DcsResponse() {
+    }
+
     public DcsResponse(String correlationId, String requestId, boolean error, boolean valid, Object errorMessage) {
         this.correlationId = correlationId;
         this.requestId = requestId;

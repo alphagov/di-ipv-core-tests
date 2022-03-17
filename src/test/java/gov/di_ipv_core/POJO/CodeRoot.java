@@ -4,6 +4,9 @@ public class CodeRoot {
 
     private Code code;
 
+    public CodeRoot() {
+    }
+
     public CodeRoot(Code code) {
         this.code = code;
     }
@@ -18,9 +21,8 @@ public class CodeRoot {
 
     @Override
     public String toString() {
-        return "CodeRoot{" +
+        return "Root{" +
                 "code=" + code +
                 '}';
     }
-
 }

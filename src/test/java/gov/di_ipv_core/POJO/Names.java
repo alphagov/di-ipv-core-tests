@@ -7,6 +7,9 @@ public class Names {
     private String familyName;
     private ArrayList<String> givenNames;
 
+    public Names() {
+    }
+
     public Names(String familyName, ArrayList<String> givenNames) {
         this.familyName = familyName;
         this.givenNames = givenNames;
