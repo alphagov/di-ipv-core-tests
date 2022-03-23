@@ -2,6 +2,7 @@ package gov.di_ipv_core.step_definitions;
 
 import gov.di_ipv_core.POJO.PassportCheckResult;
 import gov.di_ipv_core.POJO.CodeRoot;
+import gov.di_ipv_core.utilities.PassportAPIGlobals;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,17 +13,9 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 import org.junit.Assert;
 
-public class PassportAPISteps {
+public class ValidPassportAPISteps extends PassportAPIGlobals{
 
     String value;
-    String redirectURI = "https://dev-danw-di-ipv-core-front.london.cloudapps.digital/credential-issuer/callback?id=ukPassport";
-    String passportPostUrl ="https://e7jswiyhje.execute-api.eu-west-2.amazonaws.com/dev/passport?redirect_uri=https://dev-danw-di-ipv-core-front.london.cloudapps.digital/credential-issuer/callback?id=ukPassport&client_id=ipv-core&response_type=code&scope=openid";
-    String tokenPostUrl ="https://e7jswiyhje.execute-api.eu-west-2.amazonaws.com/dev/token";
-    String credentialGetUrl = "https://e7jswiyhje.execute-api.eu-west-2.amazonaws.com/dev/credential";
-    String clientId= "ipv-core";
-    String redirect_uri = "https://dev-danw-di-ipv-core-front.london.cloudapps.digital/credential-issuer/callback?id=ukPassport";
-    String grant_type = "authorization_code";
-    String client_id = "ipv-core-stub";
     String accessToken;
     boolean validMessage;
     int validityValue;
@@ -36,10 +29,10 @@ public class PassportAPISteps {
             "  \"expiryDate\": \"2021-03-01\"\n" +
             "}";
 
-    @Given("I am an authorised person")
-    public void i_am_an_authorised_person() {
+    @Given("I have Mary Watson")
+    public void i_have_Mary_Watson() {
 
-        //creating POST request with passport body to generate code
+        //creating POST request for MAry Watson with passport body to generate code
 
         Response passportResponse= given()
                 .contentType(ContentType.JSON)
@@ -47,9 +40,8 @@ public class PassportAPISteps {
                 .body(requestBody)
                 .when().post(passportPostUrl);
 
-        CodeRoot codeRoot = passportResponse.body().as(CodeRoot.class);
-        value = codeRoot.getCode().getValue();
-
+        CodeRoot root = passportResponse.body().as(CodeRoot.class);
+        value =  root.getCode().getValue();
 
         //creating POST request with code value to generate access_token
 

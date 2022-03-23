@@ -6,6 +6,9 @@ public class PassportCheckResult {
     private Attributes attributes;
     private Gpg45Score gpg45Score;
 
+    public PassportCheckResult() {
+    }
+
     public PassportCheckResult(String resourceId, Attributes attributes, Gpg45Score gpg45Score) {
         this.resourceId = resourceId;
         this.attributes = attributes;

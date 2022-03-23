@@ -2,6 +2,9 @@ package gov.di_ipv_core.POJO;
 
 public class Code {
 
+    public Code() {
+    }
+
     private String value;
 
     public Code(String value) {
@@ -22,5 +25,4 @@ public class Code {
                 "value='" + value + '\'' +
                 '}';
     }
-
 }
