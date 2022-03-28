@@ -14,7 +14,7 @@ public class OpeningPageSteps {
     @Given("user is on Prove Your Identity page")
     public void user_is_on_Prove_Your_Identity_page() {
         Driver.get().get(ConfigurationReader.get("url"));
-        BrowserUtils.waitForPageToLoad(2);
+        BrowserUtils.waitForPageToLoad(10);
 
     }
 
