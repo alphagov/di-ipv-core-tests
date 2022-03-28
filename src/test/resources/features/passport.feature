@@ -3,8 +3,6 @@ Feature: Passport Test
 @passport_test
 Scenario Outline: Passport details page
   Given user is on Prove Your Identity page
-  When user clicks on Prove Your Identity button
-  And user clicks UK Passport
   And user enters "<Passport number>", "<Surname>", "<Given names>", "<birthDay>", "<birthMonth>", "<birthYear>", "<expiryDay>","<expiryMonth>" and "<expiryYear>"
   And user clicks on continue
   Then user sees DCS check is complete message
