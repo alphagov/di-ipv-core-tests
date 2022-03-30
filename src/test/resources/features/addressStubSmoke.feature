@@ -1,6 +1,6 @@
+@address_smoke
 Feature: Full journey on Address Stub
 
-  @address_smoke
   Scenario: Test full Address Stub UI journey
     Given I am on Orchestrator Stub
     When I click on Debug route
