@@ -18,7 +18,7 @@ public class AddressStubSmokeSteps {
 
     @Given("I am on Orchestrator Stub")
     public void i_am_on_orchestrator_stub() {
-        Driver.get().get(ConfigurationReader.getOrchestratorUrl());
+        Driver.get().get(ConfigurationReader.get("orchestratorStubUrl"));
         BrowserUtils.waitForPageToLoad(10);
     }
     @When("I click on Debug route")
