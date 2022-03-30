@@ -29,10 +29,10 @@ public class ConfigurationReader {
         return properties.getProperty(keyName);
     }
 
-    public static String getOrchestratorUrl (){
+    public static String getOrchestratorUrl() {
 
         String orchestratorStubUrl = System.getenv("ORCHESTRATOR_STUB_URL");
-        if (orchestratorStubUrl==null){
+        if (orchestratorStubUrl == null) {
             throw new IllegalArgumentException("Environment variable ORCHESTRATOR_STUB_URL is not set");
         }
         return orchestratorStubUrl;
