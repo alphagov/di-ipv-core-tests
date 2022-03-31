@@ -37,7 +37,10 @@ public class Driver {
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver(new ChromeOptions().setHeadless(true)));
+                    ChromeOptions options = new ChromeOptions();
+                    options.setHeadless(true);
+                    options.addArguments("--disable-dev-shm-usage");
+                    driverPool.set(new ChromeDriver(options));
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
