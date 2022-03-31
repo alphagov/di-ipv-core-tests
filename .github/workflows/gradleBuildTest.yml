@@ -25,6 +25,9 @@ jobs:
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-      - name: Step 3 - Build with gradle
-        run:  gradle cucumber -P tags=@address_smoke
+      - name: Run Address Smoke test against build environment
+        env:
+          ORCHESTRATOR_STUB_URL: https://build-di-ipv-orchestrator-stub.london.cloudapps.digital/
+          BROWSER: chrome-headless
+        run: gradle addressStubSmoke
 
