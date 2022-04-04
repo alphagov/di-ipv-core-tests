@@ -3,7 +3,7 @@
 
 name: Gradle Package Test
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:

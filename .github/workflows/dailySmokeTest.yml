@@ -30,4 +30,4 @@ jobs:
         env:
           ORCHESTRATOR_STUB_URL: https://build-di-ipv-orchestrator-stub.london.cloudapps.digital/
           BROWSER: chrome-headless
-        run:   gradle addressStubSmoke
+        run: gradle addressStubSmoke
