@@ -29,4 +29,4 @@ jobs:
       - name: Step 3 - Build with Maven
         env:
           ORCHESTRATOR_STUB_URL: https://build-di-ipv-orchestrator-stub.london.cloudapps.digital/
-        run:  mvn clean test -D"cucumber.filter.tags=@address_smoke"
+        run:  gradle test -Dcucumber.options="--tags @address_smoke"
