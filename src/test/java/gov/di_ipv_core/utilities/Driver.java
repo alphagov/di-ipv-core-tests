@@ -28,9 +28,7 @@ public class Driver {
         //if this thread doesn't have driver - create it and add to pool
         if (driverPool.get() == null) {
 
-//            if we pass the driver from terminal then use that one
-//           if we do not pass the driver from terminal then use the one properties file
-            String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.get("browser");
+            String browser = ConfigurationReader.getBrowser();
 
             switch (browser) {
                 case "chrome":

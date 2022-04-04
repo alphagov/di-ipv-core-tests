@@ -26,7 +26,7 @@ jobs:
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-      - name: Step 3 - Build with Maven
+      - name: Step 3 - Build with Gradle
         env:
           ORCHESTRATOR_STUB_URL: https://build-di-ipv-orchestrator-stub.london.cloudapps.digital/
-        run:  gradle test -Dcucumber.options="--tags @address_smoke"
+        run:   gradle cucumber -P tags=@address_smoke

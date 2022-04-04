@@ -59,19 +59,15 @@ test {
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
 
 }
-
-//def tags = (findProperty('tags') == null) ? 'not @Ignore' : findProperty('tags') + ' and not @Ignore'
-task cucumberCli() {
+task cucumber() {
     dependsOn assemble, testClasses
     doLast {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = [
-                    '--plugin', 'pretty',
-                    '--plugin', 'html:target/cucumber-report.html',
-                    '--glue', 'gov/di_ipv_core/step_definitions',
-                    'src/test/resources']
+            args = ['--plugin', 'pretty','--tags', "${tags}",'--glue', 'gov/di_ipv_core/step_definitions', 'src/test/resources']
         }
     }
 }
+
+

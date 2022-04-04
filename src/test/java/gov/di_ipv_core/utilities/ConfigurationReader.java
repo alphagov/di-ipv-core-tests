@@ -29,6 +29,10 @@ public class ConfigurationReader {
         return properties.getProperty(keyName);
     }
 
+    public static String getBrowser() {
+        return System.getenv("BROWSER") != null ? System.getenv("BROWSER") : "chrome";
+    }
+
     public static String getOrchestratorUrl() {
 
         String orchestratorStubUrl = System.getenv("ORCHESTRATOR_STUB_URL");
