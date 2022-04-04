@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports"},
         features = "src/test/resources/features/",
         glue = "gov/di_ipv_core/step_definitions",
-        dryRun = false,
-        tags = "@address_smoke"
+        dryRun = false
+
 
 
 )

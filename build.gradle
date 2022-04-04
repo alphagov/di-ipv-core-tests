@@ -28,6 +28,12 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-junit:7.2.3'
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 description = 'ipv-core'
@@ -70,4 +76,3 @@ task addressStubSmoke() {
         }
     }
 }
-
