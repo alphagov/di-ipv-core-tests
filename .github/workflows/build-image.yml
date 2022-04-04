@@ -1,0 +1,32 @@
+name: Build di-ipv-core-tests image
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'src'
+      - '.github/workflows/build-image.yml'
+      - 'Dockerfile'
+  registry_package:
+    types:
+      - 'updated'
+
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Tag used within docker repository to mark as unique"
+        required: false
+        type: string
+
+jobs:
+  build-and-push:
+    uses: alphagov/di-dockerfiles/.github/workflows/publish_to_ghcr.yml@main
+    permissions:
+      contents: read
+      packages: write
+    with:
+      docker_context: .
+      push_to_ghcr: true
+      ghcr_repo: ghcr.io/alphagov/di/di-ipv-core-tests
+      image_tag: ${{ github.event.inputs.image_tag }}
