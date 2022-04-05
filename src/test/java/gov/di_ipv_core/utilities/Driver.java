@@ -37,7 +37,11 @@ public class Driver {
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver(new ChromeOptions().setHeadless(true).addArguments("--no-sandbox")));
+                    ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
+                    if (ConfigurationReader.noChromeSandbox()) {
+                        chromeOptions.addArguments("--no-sandbox");
+                    }
+                    driverPool.set(new ChromeDriver(chromeOptions));
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
