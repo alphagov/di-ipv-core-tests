@@ -3,19 +3,19 @@ name: Build di-ipv-core-tests image
 on:
   push:
     branches:
-      - 'main'
+      - pyic-848-build-tests-image
     paths:
-      - 'src'
-      - '.github/workflows/build-image.yml'
-      - 'Dockerfile'
+      - src
+      - .github/workflows/build-image.yml
+      - Dockerfile
   registry_package:
     types:
-      - 'updated'
+      - updated
 
   workflow_dispatch:
     inputs:
       image_tag:
-        description: "Tag used within docker repository to mark as unique"
+        description: Tag used within docker repository to mark as unique
         required: false
         type: string
 
@@ -30,3 +30,13 @@ jobs:
       push_to_ghcr: true
       ghcr_repo: ghcr.io/alphagov/di/di-ipv-core-tests
       image_tag: ${{ github.event.inputs.image_tag }}
+
+  run-address-stub-smoke:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - env:
+          ORCHESTRATOR_STUB_URL: https://build-di-ipv-orchestrator-stub.london.cloudapps.digital
+          BROWSER: chrome-headless
+          NO_CHROME_SANDBOX: true
+      - run: docker run -e ORCHESTRATOR_STUB_URL -e BROWSER -e NO_CHROME_SANDBOX ghcr.io/alphagov/di/di-ipv-core-tests ./gradlew addressStubSmoke
