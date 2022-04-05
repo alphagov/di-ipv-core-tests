@@ -42,5 +42,7 @@ public class ConfigurationReader {
         return orchestratorStubUrl;
     }
 
-
+    public static boolean noChromeSandbox() {
+        return "true".equalsIgnoreCase(System.getenv("NO_CHROME_SANDBOX"));
+    }
 }
