@@ -17,8 +17,11 @@ public class PassportPage {
     @FindBy(id="surname")
     public WebElement Surname;
 
-    @FindBy(id="givenNames")
-    public WebElement GivenNames;
+    @FindBy(id="firstName")
+    public WebElement FirstName;
+
+    @FindBy(id="middleNames")
+    public WebElement MiddleNames;
 
     @FindBy(id="dateOfBirth-day")
     public WebElement birthDay;

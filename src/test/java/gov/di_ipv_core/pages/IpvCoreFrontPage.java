@@ -11,8 +11,14 @@ public class IpvCoreFrontPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
+    @FindBy (xpath = "//h1")
+    public WebElement h1;
+
     @FindBy (xpath = "//a[normalize-space()='Address (Stub)']")
     public WebElement AddressStub;
+
+    @FindBy (xpath = "//a[normalize-space()='ukPassport']")
+    public WebElement UkPassport;
 
     @FindBy (xpath = "//span[@class='govuk-details__summary-text']")
     public WebElement CredentialAttributes;
