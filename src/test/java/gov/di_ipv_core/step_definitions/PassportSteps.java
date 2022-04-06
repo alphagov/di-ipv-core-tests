@@ -20,7 +20,7 @@ public class PassportSteps {
     public void user_enters_and(String passportNumber, String surname, String name, String birthDay, String birthMonth, String birthYear, String expiryDay, String expiryMonth, String expiryYear) {
         new PassportPage().PassportNumber.sendKeys(passportNumber);
         new PassportPage().Surname.sendKeys(surname);
-        new PassportPage().GivenNames.sendKeys(name);
+        new PassportPage().FirstName.sendKeys(name);
         new PassportPage().birthDay.sendKeys(birthDay);
         new PassportPage().birthMonth.sendKeys(birthMonth);
         new PassportPage().birthYear.sendKeys(birthYear);
