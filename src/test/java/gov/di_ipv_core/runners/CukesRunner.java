@@ -9,9 +9,10 @@ import org.junit.runner.RunWith;
         publish = true,
         plugin = {"json:target/cucumber.json",
                 "html:target/default-html-reports"},
-        features = "src/test/resources/features/",
+        features = "src/test/resources/features",
         glue = "gov/di_ipv_core/step_definitions",
-        dryRun = false
+        dryRun = false,
+        tags = "@address_smoke"
 )
 public class CukesRunner {
 }
