@@ -54,10 +54,11 @@ jobs:
           tags: ${{ steps.tags.outputs.tags }}
       - name: Test image
         env:
+          CORE_STUB_URL: https://build-passport-core-stub.london.cloudapps.digital/credential-issuers
           ORCHESTRATOR_STUB_URL: https://build-di-ipv-orchestrator-stub.london.cloudapps.digital
           BROWSER: chrome-headless
           NO_CHROME_SANDBOX: true
-        run: docker run -e ORCHESTRATOR_STUB_URL -e BROWSER -e NO_CHROME_SANDBOX "${GHCR_REPO}":latest ./gradlew addressStubSmoke
+        run: docker run -e CORE_STUB_URL -e ORCHESTRATOR_STUB_URL -e BROWSER -e NO_CHROME_SANDBOX "${GHCR_REPO}":latest ./gradlew addressStubSmoke passportCriSmokeBuild passportCriSmokeStaging
       - name: Build and push
         uses: docker/build-push-action@v2
         with:

@@ -1,11 +1,19 @@
 package gov.di_ipv_core.step_definitions;
 
+import gov.di_ipv_core.pages.CoreStubCrisPage;
+import gov.di_ipv_core.pages.CoreStubUserSearchPage;
+import gov.di_ipv_core.pages.CoreStubVerifiableCredentialsPage;
 import gov.di_ipv_core.pages.IpvCoreFrontPage;
 import gov.di_ipv_core.pages.PassportPage;
 import gov.di_ipv_core.utilities.BrowserUtils;
+import gov.di_ipv_core.utilities.ConfigurationReader;
+import gov.di_ipv_core.utilities.Driver;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PassportCriSmokeSteps {
 
@@ -18,6 +26,35 @@ public class PassportCriSmokeSteps {
     public static final String BIRTH_MONTH = "02";
     public static final String BIRTH_YEAR = "1932";
     public static final String EXPIRY_DAY = "01";
+
+    @When("I start at the core stub")
+    public void startCoreStub() {
+        Driver.get().get(ConfigurationReader.getCoreStubUrl());
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @When("I click on Build Passport")
+    public void clickOnBuildPassport() {
+        new CoreStubCrisPage().BuildPassportLink.click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @When("I enter '{}' in the Row Number box")
+    public void enterRowNumber(String rowNumber) {
+        new CoreStubUserSearchPage().rowNumberBox.sendKeys(rowNumber);
+    }
+
+    @When("I click on Go to Build Passport")
+    public void clickOnGoToBuildPassport() {
+        new CoreStubUserSearchPage().goToBuildPassportButton.click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @Then("I should be on the passport details page")
+    public void passportDetailsConfirm() {
+        assertTrue(Driver.get().getCurrentUrl().endsWith("/passport/details"));
+    }
+
 
     @When("I click on ukPassport")
     public void clickOnUkPassport() {
@@ -38,6 +75,20 @@ public class PassportCriSmokeSteps {
         passportPage.PassportExpiryDay.sendKeys(EXPIRY_DAY);
         passportPage.PassportExpiryMonth.sendKeys(EXPIRY_MONTH);
         passportPage.PassportExpiryYear.sendKeys(EXPIRY_YEAR);
+    }
+
+    @Then("I should be on the core stub Verifiable Credentials page")
+    public void coreStubVcPageConfirm() {
+        assertEquals("Verifiable Credentials", new CoreStubVerifiableCredentialsPage().h1.getText());
+    }
+
+    @Then("I should see Missing part delimiters displayed")
+    public void missingPartDelimiters() {
+        // This is just testing the error that passport CRI is currently returning due to it not inplementing
+        // the correct interface the core expects. This will be updated when passport is fixed.
+        CoreStubVerifiableCredentialsPage coreStubVerifiableCredentialsPage = new CoreStubVerifiableCredentialsPage();
+        coreStubVerifiableCredentialsPage.response.click();
+        assertTrue(coreStubVerifiableCredentialsPage.jsonData.getText().contains("Missing part delimiters"));
     }
 }
 

@@ -1,7 +1,19 @@
-@passportSmoke
 Feature: Full journey with UK Passport CRI
 
-  Scenario: Successful journey
+  @passportSmokeBuild
+  Scenario: Successful journey from core stub
+    Given I start at the core stub
+    And I click on Build Passport
+    And I enter '3' in the Row Number box
+    And I click on Go to Build Passport
+    Then I should be on the passport details page
+    When I fill in my details
+    And I click continue
+    Then I should be on the core stub Verifiable Credentials page
+    And I should see Missing part delimiters displayed
+
+  @assportSmokeStaging
+  Scenario: Successful journey from core
     Given I am on Orchestrator Stub
     When I click on Debug route
     Then I should get five options
