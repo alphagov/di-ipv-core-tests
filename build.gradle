@@ -77,13 +77,24 @@ task addressStubSmoke() {
     }
 }
 
-task passportCriSmoke() {
+task passportCriSmokeBuild() {
     dependsOn assemble, compileTestJava
     doLast {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'gov/di_ipv_core/step_definitions', 'src/test/resources/features/', '--tags', '@passportSmoke']
+            args = ['--plugin', 'pretty', '--glue', 'gov/di_ipv_core/step_definitions', 'src/test/resources/features/', '--tags', '@passportSmokeBuild']
+        }
+    }
+}
+
+task passportCriSmokeStaging() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'gov/di_ipv_core/step_definitions', 'src/test/resources/features/', '--tags', '@passportSmokeStaging' ]
         }
     }
 }
