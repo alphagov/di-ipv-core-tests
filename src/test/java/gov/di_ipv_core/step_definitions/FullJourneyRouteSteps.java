@@ -2,21 +2,13 @@ package gov.di_ipv_core.step_definitions;
 
 import gov.di_ipv_core.pages.*;
 import gov.di_ipv_core.utilities.BrowserUtils;
-import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class FullJourneyRouteSteps {
 
-    // this step needs to be replaced with Given I am on Orchestrator stub in CommonSmokeSteps
-    @Given("I am on Orchestrator Stub URL")
-    public void i_am_on_orchestrator_stub_url() {
-        Driver.get().get(ConfigurationReader.getOrchestratorUrl());
-        BrowserUtils.waitForPageToLoad(10);
-    }
     @When("I click on `Full journey route`")
     public void i_click_on_full_journey_route() {
         new OrchestratorStubPage().FullJourneyRoute.click();
@@ -112,11 +104,5 @@ public class FullJourneyRouteSteps {
     public void i_should_be_on_you_ve_successfully_proved_your_identity_page() {
         Assert.assertTrue(new YouHaveSuccessfullyProvedYourIdentityPage().Continue.isDisplayed());
     }
-
-
-
-
-
-
 
 }

@@ -9,8 +9,6 @@ Feature: Testing `Full journey route` on Orchestrator Stub. Happy path with Mary
     When I click `Continue`
     Then I should be on `Enter your details exactly as they appear on your UK passport` page
     When I enter Mary Watson's details and click Continue
-#    Then I should be on UK Passport (Stub)
-#    When I supply data in JSON format, GPG Strength 4, Validity 1 and click `Submit data and generate auth code`
     Then I should be on Address (Stub)
     When I supply data in JSON format and click `Submit data and generate auth code`
     Then I should be on Fraud Check (Stub)
