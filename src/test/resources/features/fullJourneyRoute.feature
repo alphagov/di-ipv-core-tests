@@ -2,7 +2,7 @@ Feature: Testing `Full journey route` on Orchestrator Stub. Happy path with Mary
 
   @Full_journey_route
   Scenario: UI and Accessibility tests of `Full journey route`
-    Given I am on Orchestrator Stub URL
+    Given I am on Orchestrator Stub
     When I click on `Full journey route`
     Then I should be on `You’ve signed in to your GOV.UK account` page
     And the number of severe and serious issues detected must be zero
