@@ -1,0 +1,25 @@
+Feature: Testing `Full journey route` on Orchestrator Stub. Happy path with Mary Watson
+
+  @Full_journey_route
+  Scenario: UI and Accessibility tests of `Full journey route`
+    Given I am on Orchestrator Stub URL
+    When I click on `Full journey route`
+    Then I should be on `You’ve signed in to your GOV.UK account` page
+    And the number of severe and serious issues detected must be zero
+    When I click `Continue`
+    Then I should be on `Enter your details exactly as they appear on your UK passport` page
+    When I enter Mary Watson's details and click Continue
+#    Then I should be on UK Passport (Stub)
+#    When I supply data in JSON format, GPG Strength 4, Validity 1 and click `Submit data and generate auth code`
+    Then I should be on Address (Stub)
+    When I supply data in JSON format and click `Submit data and generate auth code`
+    Then I should be on Fraud Check (Stub)
+    When I supply data in JSON format, Fraud value 1 and click on `Submit data and generate auth code`
+    Then I should be on `Answer security questions` page
+    And the number of severe and serious issues detected must be zero
+    When I click `Start`
+    Then I should be on Knowledge Based Verification (Stub)
+    When I supply data in JSON format, Verification value 1 and click on `Submit data and generate auth code`
+    Then I should be on You've successfully proved your identity page
+    And the number of severe and serious issues detected must be zero
+
