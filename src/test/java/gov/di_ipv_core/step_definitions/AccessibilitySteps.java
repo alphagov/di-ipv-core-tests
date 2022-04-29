@@ -38,7 +38,7 @@ public class AccessibilitySteps {
         numberOfSeriousAndSevereIssues=0;
         for (int i = 0; i < violations.length(); i++) {
             JSONObject violation = violations.getJSONObject(i);
-            if(violation.get("impact").equals("serious") || violation.get("impact").equals("severe")){
+            if(violation.get("impact").equals("serious") || violation.get("impact").equals("severe") || violation.get("impact").equals("critical")){
                 numberOfSeriousAndSevereIssues = numberOfSeriousAndSevereIssues+1;
             }
             System.out.println("Violation " + (i+1) + " = " +violation.get("help"));
@@ -49,15 +49,16 @@ public class AccessibilitySteps {
 
     }
 
-    @Then("the number of severe and serious issues detected must be zero")
-    public void the_number_of_severe_and_serious_issues_detected_must_be_zero() {
+    @Then("the number of `Critical` or `Severe` or `Serious` issues detected must be zero")
+    public void the_number_of_Critical_or_Severe_or_Serious_issues_detected_must_be_zero() {
         Assert.assertEquals(0, numberOfSeriousAndSevereIssues);
     }
 
     @Given("I am on the {string}")
     public void i_am_on_the(String testPage) {
         Driver.get().get(ConfigurationReader.get(testPage));
-        BrowserUtils.waitForPageToLoad(10);
+        //BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.waitFor(3);
     }
 
 }

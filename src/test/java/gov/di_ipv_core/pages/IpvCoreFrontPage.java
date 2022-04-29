@@ -26,4 +26,7 @@ public class IpvCoreFrontPage {
     @FindBy (xpath = "//input[@value='Authorize and Return']")
     public WebElement AuthorizeAndReturn;
 
+    @FindBy (xpath = "/html/body/div/main/div/div/dl[3]/div/dd/pre")
+    public WebElement GPG45Score;
+
 }
