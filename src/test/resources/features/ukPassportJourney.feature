@@ -1,5 +1,7 @@
 Feature: UK passport journey on the Staging Orchestrator Stub
 
+  //sometimes first test fail due to Lambda cold start
+
   @happy_passport
   Scenario: Happy Path with Mary Watson
     Given I am on Orchestrator Stub
