@@ -29,6 +29,11 @@ public class CommonSmokeSteps {
         BrowserUtils.waitForPageToLoad(10);
     }
 
+    @Then("I should get five options")
+    public void i_should_get_five_options() {
+        Assert.assertTrue(new IpvCoreFrontPage().UkPassport.isDisplayed());
+    }
+
     @When("I click continue")
     public void clickContinue() {
         new PassportPage().Continue.click();
