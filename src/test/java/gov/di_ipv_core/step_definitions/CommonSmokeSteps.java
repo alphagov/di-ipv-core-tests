@@ -31,7 +31,7 @@ public class CommonSmokeSteps {
 
     @Then("I should get five options")
     public void i_should_get_five_options() {
-        Assert.assertTrue(new IpvCoreFrontPage().AddressStub.isDisplayed());
+        Assert.assertTrue(new IpvCoreFrontPage().UkPassport.isDisplayed());
     }
 
     @When("I click continue")
@@ -68,7 +68,7 @@ public class CommonSmokeSteps {
 
     @Given("I should see {} in the JSON payload")
     public void i_should_see_my_data_in_json_payload(String name) {
-        String payload =new UserInformationPage().VerifiableCredentialJSONPayload.getText();
+        String payload = new UserInformationPage().VerifiableCredentialJSONPayload.getText();
         System.out.println("payload = " + payload);
         boolean visibilityOfName = payload.contains(name);
         System.out.println("visibilityOfName = " + visibilityOfName);
