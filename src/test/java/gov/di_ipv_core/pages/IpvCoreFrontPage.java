@@ -14,8 +14,8 @@ public class IpvCoreFrontPage {
     @FindBy (xpath = "//h1")
     public WebElement h1;
 
-    @FindBy (xpath = "//a[normalize-space()='Address (Stub)']")
-    public WebElement AddressStub;
+    @FindBy (xpath = "//a[normalize-space()='KBV (Stub)']")
+    public WebElement KbvStub;
 
     @FindBy (xpath = "//a[normalize-space()='ukPassport']")
     public WebElement UkPassport;

@@ -13,6 +13,9 @@ public class SupplyDataPage {
     @FindBy (id = "jsonPayload")
     public WebElement supplyDataInJSONFormatBox;
 
+    @FindBy (id = "verification")
+    public WebElement supplyGpg45VerificationValue;
+
     @FindBy (xpath = "//input[@name='submit']")
     public WebElement SubmitDataAndGenerateAuthCode;
 }
