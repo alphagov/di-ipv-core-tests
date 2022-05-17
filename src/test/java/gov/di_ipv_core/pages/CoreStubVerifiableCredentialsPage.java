@@ -10,13 +10,13 @@ public class CoreStubVerifiableCredentialsPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(xpath = "//h1")
+    @FindBy(xpath = "//*[@id=\"main-content\"]/div/h1")
     public WebElement h1;
 
-    @FindBy (xpath = "//span[@class='govuk-details__summary-text']")
+    @FindBy (xpath = "//*[@id=\"main-content\"]/div/details/summary/span")
     public WebElement response;
 
-    @FindBy(id = "data")
+    @FindBy(xpath = "//*[@id=\"data\"]")
     public WebElement jsonData;
 
 }

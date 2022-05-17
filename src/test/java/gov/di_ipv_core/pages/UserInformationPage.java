@@ -9,9 +9,10 @@ public class UserInformationPage {
     public UserInformationPage(){
         PageFactory.initElements(Driver.get(), this);
     }
-    @FindBy (xpath = "//span[@class='govuk-details__summary-text']")
+
+    @FindBy (xpath = "//*[@id=\"main-content\"]/div[3]/div/dl/div/dd/details/summary/span")
     public WebElement VerifiableCredential;
 
-    @FindBy (xpath = "//*[@id=\"data\"]")
+    @FindBy (xpath = "//*[@id=\"main-content\"]/div[3]/div/dl/div/dd/details/div/pre")
     public WebElement VerifiableCredentialJSONPayload;
 }
