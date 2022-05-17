@@ -10,6 +10,9 @@ public class CoreStubCrisPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
+    @FindBy(xpath = "//*[@id=\"main-content\"]/p/a/button")
+    public WebElement VisitCredentialIssuersLink;
+
     @FindBy(xpath = "//input[@value='Build Passport']")
     public WebElement BuildPassportLink;
 }
