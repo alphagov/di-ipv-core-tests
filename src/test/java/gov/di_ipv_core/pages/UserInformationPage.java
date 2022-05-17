@@ -12,6 +12,6 @@ public class UserInformationPage {
     @FindBy (xpath = "//span[@class='govuk-details__summary-text']")
     public WebElement VerifiableCredential;
 
-    @FindBy (xpath = "//*[@id=\"main-content\"]/div[2]/div/dl/div/dd/details/div/pre")
+    @FindBy (xpath = "//*[@id=\"data\"]")
     public WebElement VerifiableCredentialJSONPayload;
 }

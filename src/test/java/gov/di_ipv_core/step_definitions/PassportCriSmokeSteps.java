@@ -5,11 +5,13 @@ import gov.di_ipv_core.pages.CoreStubUserSearchPage;
 import gov.di_ipv_core.pages.CoreStubVerifiableCredentialsPage;
 import gov.di_ipv_core.pages.IpvCoreFrontPage;
 import gov.di_ipv_core.pages.PassportPage;
+import gov.di_ipv_core.pages.UserInformationPage;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import static org.junit.Assert.assertEquals;
@@ -30,6 +32,12 @@ public class PassportCriSmokeSteps {
     @When("I start at the core stub")
     public void startCoreStub() {
         Driver.get().get(ConfigurationReader.getCoreStubUrl());
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @When("I click on visit credential issuers")
+    public void clickOnVisitCredentialIssuers() {
+        new CoreStubCrisPage().VisitCredentialIssuersLink.click();
         BrowserUtils.waitForPageToLoad(10);
     }
 
@@ -82,13 +90,23 @@ public class PassportCriSmokeSteps {
         assertEquals("Verifiable Credentials", new CoreStubVerifiableCredentialsPage().h1.getText());
     }
 
-    @Then("I should see Missing part delimiters displayed")
-    public void missingPartDelimiters() {
-        // This is just testing the error that passport CRI is currently returning due to it not inplementing
-        // the correct interface the core expects. This will be updated when passport is fixed.
+    @Then("I should see passport data in JSON")
+    public void seePassportData() {
         CoreStubVerifiableCredentialsPage coreStubVerifiableCredentialsPage = new CoreStubVerifiableCredentialsPage();
         coreStubVerifiableCredentialsPage.response.click();
-        assertTrue(coreStubVerifiableCredentialsPage.jsonData.getText().contains("Missing part delimiters"));
+
+        String payload = new UserInformationPage().VerifiableCredentialJSONPayload.getText();
+        System.out.println("payload = " + payload);
+
+        Assert.assertTrue(payload.contains(PASSPORT_NUMBER));
+        Assert.assertTrue(payload.contains(SURNAME));
+        Assert.assertTrue(payload.contains(FIRST_NAME));
+        Assert.assertTrue(payload.contains(BIRTH_DAY));
+        Assert.assertTrue(payload.contains(BIRTH_MONTH));
+        Assert.assertTrue(payload.contains(BIRTH_YEAR));
+        Assert.assertTrue(payload.contains(EXPIRY_DAY));
+        Assert.assertTrue(payload.contains(EXPIRY_MONTH));
+        Assert.assertTrue(payload.contains(EXPIRY_YEAR));
     }
 }
 
