@@ -35,12 +35,6 @@ public class PassportCriSmokeSteps {
         BrowserUtils.waitForPageToLoad(10);
     }
 
-    @When("I click on visit credential issuers")
-    public void clickOnVisitCredentialIssuers() {
-        new CoreStubCrisPage().VisitCredentialIssuersLink.click();
-        BrowserUtils.waitForPageToLoad(10);
-    }
-
     @When("I click on Build Passport")
     public void clickOnBuildPassport() {
         new CoreStubCrisPage().BuildPassportLink.click();

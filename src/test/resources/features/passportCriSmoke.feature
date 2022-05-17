@@ -3,7 +3,6 @@ Feature: Full journey with UK Passport CRI
   @passportSmokeBuild
   Scenario: Successful journey from core stub
     Given I start at the core stub
-    And I click on visit credential issuers
     And I click on Build Passport
     And I enter '3' in the Row Number box
     And I click on Go to Build Passport
