@@ -95,7 +95,7 @@ public class PassportCriSmokeSteps {
         CoreStubVerifiableCredentialsPage coreStubVerifiableCredentialsPage = new CoreStubVerifiableCredentialsPage();
         coreStubVerifiableCredentialsPage.response.click();
 
-        String payload = new UserInformationPage().VerifiableCredentialJSONPayload.getText();
+        String payload = coreStubVerifiableCredentialsPage.jsonData.getText();
         System.out.println("payload = " + payload);
 
         Assert.assertTrue(payload.contains(PASSPORT_NUMBER));
