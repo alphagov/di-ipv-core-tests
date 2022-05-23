@@ -10,11 +10,14 @@ Feature: Testing `Full journey route` on Orchestrator Stub. Happy path with Mary
     Then I should be on `Enter your details exactly as they appear on your UK passport` page
     When I enter Mary Watson's details and click Continue
     Then I should be on Address (Stub)
-    When I supply data in JSON format and click `Submit data and generate auth code`
-    Then I should be on Fraud Check (Stub)
-    When I supply data in JSON format, Fraud value 1 and click on `Submit data and generate auth code`
-    Then I should be on `Answer security questions` page
-    Then the number of `Critical` or `Severe` or `Serious` issues detected must be zero
+    When I enter the address details and click continue
+    Then I should be on Address confirmation (stub)
+    And  I should be on check address (stub)
+#    When I supply data in JSON format and click `Submit data and generate auth code`
+    When I should be on Fraud Check (Stub)
+    Then I supply data in JSON format, Fraud value 1 and click on `Submit data and generate auth code`
+    And I should be on `Answer security questions` page
+    And the number of `Critical` or `Severe` or `Serious` issues detected must be zero
     When I click `Start`
     Then I should be on Knowledge Based Verification (Stub)
     When I supply data in JSON format, Verification value 1 and click on `Submit data and generate auth code`

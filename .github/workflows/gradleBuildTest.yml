@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Kbv Smoke test against build environment
         env:
-          ORCHESTRATOR_STUB_URL: https://build-di-ipv-orchestrator-stub.london.cloudapps.digital/
+          ORCHESTRATOR_STUB_URL: https://Staging-di-ipv-orchestrator-stub.london.cloudapps.digital/
           BROWSER: chrome-headless
         run: gradle kbvStubSmoke
 

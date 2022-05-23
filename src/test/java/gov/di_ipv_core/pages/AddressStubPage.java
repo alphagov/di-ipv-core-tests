@@ -11,8 +11,12 @@ public class AddressStubPage {
     }
 
     @FindBy(id ="jsonPayload")
-    public WebElement JSONPayLoader;
+    public WebElement   JSONPayLoader;
 
     @FindBy (xpath = "//input[@name='submit']")
     public WebElement SubmitDataAndGenerateAuthCode;
+
+    @FindBy(id ="header")
+    public WebElement   header;
+
 }

@@ -9,6 +9,6 @@ public class YouHaveSignedInToYourGOVUKAccountPage {
     public YouHaveSignedInToYourGOVUKAccountPage (){
         PageFactory.initElements(Driver.get(), this);
     }
-    @FindBy (xpath = "//a[@role='button']")
+    @FindBy (xpath = "//a[@class='govuk-button']")
     public WebElement Continue;
 }

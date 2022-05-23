@@ -10,9 +10,13 @@ import gov.di_ipv_core.pages.KnowledgeBasedVerificationStubPage;
 import gov.di_ipv_core.pages.YouHaveSuccessfullyProvedYourIdentityPage;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 public class FullJourneyRouteSteps {
 
@@ -25,7 +29,7 @@ public class FullJourneyRouteSteps {
     @Then("I should be on `You’ve signed in to your GOV.UK account` page")
     public void i_should_be_on_you_ve_signed_in_to_your_gov_uk_account_page() {
         String currentPageTitle = Driver.get().getTitle();
-        String expectedPageTitle = "Prove your identity - GDS";
+        String expectedPageTitle = "You’ve signed in to your GOV.UK account – – GOV.UK";
         System.out.println("currentPageTitle = " + currentPageTitle);
         System.out.println("expectedPageTitle = " + expectedPageTitle);
         Assert.assertEquals(expectedPageTitle, currentPageTitle);
@@ -72,7 +76,7 @@ public class FullJourneyRouteSteps {
 
     @Then("I should be on Address \\(Stub)")
     public void i_should_be_on_address_stub() {
-        Assert.assertTrue(new AddressStubPage().JSONPayLoader.isDisplayed());
+        Assert.assertTrue(new AddressStubPage().header.isDisplayed());
     }
 
     @When("I supply data in JSON format and click `Submit data and generate auth code`")
@@ -122,4 +126,27 @@ public class FullJourneyRouteSteps {
         Assert.assertTrue(new YouHaveSuccessfullyProvedYourIdentityPage().Continue.isDisplayed());
     }
 
+    @When("I enter the address details and click continue")
+    public void iEnterTheAddressDetailsAndClickContinue() {
+            new EnterYourDetailsExactlyPage().Postcode.sendKeys("BT2 8LN");
+            new EnterYourDetailsExactlyPage().FindAddress.click();
+            Select dropdown = new Select(new EnterYourDetailsExactlyPage().AddressSelection);
+            dropdown.selectByValue("2 CITY GATE SUSSEX PLACE, BELFAST, BT2 8LN");
+            new EnterYourDetailsExactlyPage().SelectAddress.click();
+
+    }
+
+    @Then("I should be on Address confirmation \\(stub)")
+    public void iShouldBeOnAddressConfirmationStub() {
+        Assert.assertTrue(new EnterYourDetailsExactlyPage().CurrentHomeAddressHeader.isDisplayed());
+        new EnterYourDetailsExactlyPage().AddressFlatNumber.sendKeys("12");
+        new EnterYourDetailsExactlyPage().AddressYearFrom.sendKeys("2020");
+        new EnterYourDetailsExactlyPage().Continue.click();
+    }
+
+    @And("I should be on check address \\(stub)")
+    public void iShouldBeOnCheckAddressStub() {
+        Assert.assertTrue(new EnterYourDetailsExactlyPage().CheckYourDetails.isDisplayed());
+        new EnterYourDetailsExactlyPage().Continue.click();
+    }
 }

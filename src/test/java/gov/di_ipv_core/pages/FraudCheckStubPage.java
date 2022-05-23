@@ -10,7 +10,7 @@ public class FraudCheckStubPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy (id="jsonPayload")
+    @FindBy (xpath = "//input[@name='submit']")
     public WebElement JSONPayLoader;
 
     @FindBy (id ="fraud")

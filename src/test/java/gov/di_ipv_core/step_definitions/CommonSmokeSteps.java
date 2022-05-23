@@ -19,7 +19,7 @@ public class CommonSmokeSteps {
 
     @Given("I am on Orchestrator Stub")
     public void i_am_on_orchestrator_stub() {
-        Driver.get().get(ConfigurationReader.getOrchestratorUrl());
+        Driver.get().get("https://staging-di-ipv-orchestrator-stub.london.cloudapps.digital");
         BrowserUtils.waitForPageToLoad(10);
     }
 

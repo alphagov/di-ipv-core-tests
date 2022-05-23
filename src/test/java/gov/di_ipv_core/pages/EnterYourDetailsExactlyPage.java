@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class EnterYourDetailsExactlyPage {
-    public EnterYourDetailsExactlyPage(){
+    public  EnterYourDetailsExactlyPage(){
         PageFactory.initElements(Driver.get(),this);
     }
 
@@ -43,7 +43,28 @@ public class EnterYourDetailsExactlyPage {
     @FindBy (xpath = "//button[@class='govuk-button button']")
     public WebElement Continue;
 
+    @FindBy (xpath = "//*[@id=\"addressSearch\"]")
+    public WebElement Postcode;
 
+    @FindBy (xpath = "//*[@id=\"main-content\"]/form/button")
+    public WebElement SelectAddress;
 
+    @FindBy (xpath = "//*[@id=\"main-content\"]/div/div/form/button")
+    public WebElement FindAddress;
+
+    @FindBy (xpath = "//*[@id=\"address-selection\"]")
+    public WebElement AddressSelection;
+
+    @FindBy (xpath = "//*[@id=\"header\"]")
+    public WebElement CurrentHomeAddressHeader;
+
+    @FindBy (xpath = "//*[@id=\"addressFlatNumber\"]")
+    public WebElement AddressFlatNumber;
+
+    @FindBy (xpath = "//*[@id=\"addressYearFrom\"]")
+    public WebElement AddressYearFrom;
+
+    @FindBy (xpath = "//*[@id=\"header\"]")
+    public WebElement CheckYourDetails;
 
 }
