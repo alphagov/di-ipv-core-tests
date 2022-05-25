@@ -1,4 +1,4 @@
-Feature: Passport Test
+Feature: Passport Test @test
 
 @passport_test
 Scenario Outline: Passport details page
