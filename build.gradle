@@ -28,15 +28,11 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-junit:7.2.3'
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
-    // https://mvnrepository.com/artifact/com.deque/axe-selenium
     implementation group: 'com.deque', name: 'axe-selenium', version: '3.0'
-    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.2.2'
-
-
-
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.226'
+    testImplementation group: 'software.amazon.awssdk', name: 's3', version: '2.17.191'
 
 }
 
@@ -107,6 +103,16 @@ task passportCriSmokeStaging() {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty', '--glue', 'gov/di_ipv_core/step_definitions', 'src/test/resources/features/', '--tags', '@passportSmokeStaging' ]
+        }
+    }
+}
+task addressStubSmoke() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'gov/di_ipv_core/step_definitions', 'src/test/resources/features/', '--tags', '@address_smoke' ]
         }
     }
 }
