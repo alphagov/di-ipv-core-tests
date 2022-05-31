@@ -4,7 +4,6 @@ Feature: Full journey on Kbv Stub
   Scenario: Test full Kbv Stub UI journey
     Given I am on Orchestrator Stub
     When I click on Debug route
-    Then I should get five options
     When I click on Kbv(Stub)
     And I supply my data in JSON format
     And I supply my gpg45 verification value
