@@ -11,7 +11,7 @@ import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 public class Hooks {
 
     @Before("@integration_test")
-    public void clearS3Bucket(){
+    public void clearS3Bucket() {
         final String BUCKET_NAME = "staging-smoke-test-sms-codes";
         final String OBJECT_NAME = "+447700900222";
         S3Client s3Client = S3Client.builder().region(Region.EU_WEST_2).build();
@@ -22,7 +22,8 @@ public class Hooks {
                 .build());
 
     }
-    @After ("@integration_test")
+
+    @After("@integration_test")
     public void tearDown() {
         final String BUCKET_NAME = "staging-smoke-test-sms-codes";
         final String OBJECT_NAME = "+447700900222";
@@ -35,8 +36,8 @@ public class Hooks {
     }
 
     @AfterAll
-    public  static void quitDriver() {
-                Driver.closeDriver();
+    public static void quitDriver() {
+        Driver.closeDriver();
 
     }
 }

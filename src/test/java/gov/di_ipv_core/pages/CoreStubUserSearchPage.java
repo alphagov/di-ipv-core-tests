@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CoreStubUserSearchPage {
-    public CoreStubUserSearchPage(){
+    public CoreStubUserSearchPage() {
         PageFactory.initElements(Driver.get(), this);
     }
 

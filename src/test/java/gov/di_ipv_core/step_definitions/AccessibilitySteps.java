@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Assert;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -35,14 +36,14 @@ public class AccessibilitySteps {
 
         System.out.println("Number of violations = " + violations.length());
 
-        numberOfSeriousAndSevereIssues=0;
+        numberOfSeriousAndSevereIssues = 0;
         for (int i = 0; i < violations.length(); i++) {
             JSONObject violation = violations.getJSONObject(i);
-            if(violation.get("impact").equals("serious") || violation.get("impact").equals("severe") || violation.get("impact").equals("critical")){
-                numberOfSeriousAndSevereIssues = numberOfSeriousAndSevereIssues+1;
+            if (violation.get("impact").equals("serious") || violation.get("impact").equals("severe") || violation.get("impact").equals("critical")) {
+                numberOfSeriousAndSevereIssues = numberOfSeriousAndSevereIssues + 1;
             }
-            System.out.println("Violation " + (i+1) + " = " +violation.get("help"));
-            System.out.println("Violation " + (i +1) + " impact = " + violation.get("impact"));
+            System.out.println("Violation " + (i + 1) + " = " + violation.get("help"));
+            System.out.println("Violation " + (i + 1) + " impact = " + violation.get("impact"));
             System.out.println("numberOfSeriousAndSevereIssues = " + numberOfSeriousAndSevereIssues);
 
         }

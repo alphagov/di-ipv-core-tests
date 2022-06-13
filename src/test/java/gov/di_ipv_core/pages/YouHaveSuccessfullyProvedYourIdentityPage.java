@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class YouHaveSuccessfullyProvedYourIdentityPage {
-    public YouHaveSuccessfullyProvedYourIdentityPage(){
-        PageFactory.initElements(Driver.get(),this);
+    public YouHaveSuccessfullyProvedYourIdentityPage() {
+        PageFactory.initElements(Driver.get(), this);
     }
 
     @FindBy(xpath = "//a[@role='button']")

@@ -7,14 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class OrchestratorStubPage {
 
-    public OrchestratorStubPage(){
+    public OrchestratorStubPage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy (xpath = "//input[@value='Debug route']")
+    @FindBy(xpath = "//input[@value='Debug route']")
     public WebElement DebugRoute;
 
-    @FindBy (xpath = "//input[@value='Full journey route']")
+    @FindBy(xpath = "//input[@value='Full journey route']")
     public WebElement FullJourneyRoute;
 
 }

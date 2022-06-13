@@ -10,10 +10,12 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+
 import static io.restassured.RestAssured.given;
+
 import org.junit.Assert;
 
-public class ValidPassportAPISteps extends PassportAPIGlobals{
+public class ValidPassportAPISteps extends PassportAPIGlobals {
 
     String value;
     String accessToken;
@@ -34,14 +36,14 @@ public class ValidPassportAPISteps extends PassportAPIGlobals{
 
         //creating POST request for MAry Watson with passport body to generate code
 
-        Response passportResponse= given()
+        Response passportResponse = given()
                 .contentType(ContentType.JSON)
-                .queryParam("redirect_uri", redirectURI).queryParam("client_id",clientId )
+                .queryParam("redirect_uri", redirectURI).queryParam("client_id", clientId)
                 .body(requestBody)
                 .when().post(passportPostUrl);
 
         CodeRoot root = passportResponse.body().as(CodeRoot.class);
-        value =  root.getCode().getValue();
+        value = root.getCode().getValue();
 
         //creating POST request with code value to generate access_token
 
@@ -52,7 +54,7 @@ public class ValidPassportAPISteps extends PassportAPIGlobals{
                 .formParam("redirect_uri", redirect_uri)
                 .formParam("grant_type", grant_type)
                 .formParam("client_id", client_id)
-                        .when().post(tokenPostUrl);
+                .when().post(tokenPostUrl);
 
         JsonPath tokenPath = tokenResponse.jsonPath();
         accessToken = tokenPath.get("access_token");
@@ -73,10 +75,10 @@ public class ValidPassportAPISteps extends PassportAPIGlobals{
     }
 
     @Then("I should get passport valid message and validity value must be 2")
-    public void i_should_get_passport_valid_message_and_validity_value_must_be_2 () {
+    public void i_should_get_passport_valid_message_and_validity_value_must_be_2() {
         Assert.assertTrue(validMessage);
         System.out.println("validMessage = " + validMessage);
-        Assert.assertEquals(2,validityValue);
+        Assert.assertEquals(2, validityValue);
         System.out.println("validityValue = " + validityValue);
     }
 

@@ -6,9 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class YouHaveSignedInToYourGOVUKAccountPage {
-    public YouHaveSignedInToYourGOVUKAccountPage (){
+    public YouHaveSignedInToYourGOVUKAccountPage() {
         PageFactory.initElements(Driver.get(), this);
     }
-    @FindBy (xpath = "//a[@role='button']")
+
+    @FindBy(xpath = "//a[@class='govuk-button']")
     public WebElement Continue;
 }

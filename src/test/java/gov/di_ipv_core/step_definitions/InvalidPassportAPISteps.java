@@ -35,13 +35,13 @@ public class InvalidPassportAPISteps extends PassportAPIGlobals {
 
         Response alBundyPassportResponse = RestAssured.given()
                 .contentType(ContentType.JSON)
-                .queryParam("redirect_uri", redirectURI).queryParam("client_id",clientId )
+                .queryParam("redirect_uri", redirectURI).queryParam("client_id", clientId)
                 .body(alBundyRequestBody)
                 .when().post(passportPostUrl);
 
 
         CodeRoot root = alBundyPassportResponse.body().as(CodeRoot.class);
-        value =  root.getCode().getValue();
+        value = root.getCode().getValue();
 
 
         //creating POST request with code value to generate access_token

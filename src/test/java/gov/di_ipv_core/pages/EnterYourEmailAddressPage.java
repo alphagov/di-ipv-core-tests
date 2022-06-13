@@ -6,9 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class EnterYourEmailAddressPage {
-    public EnterYourEmailAddressPage(){
-        PageFactory.initElements(Driver.get(),this);
+    public EnterYourEmailAddressPage() {
+        PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy(id = "email")
     public WebElement EmailAddress;
 

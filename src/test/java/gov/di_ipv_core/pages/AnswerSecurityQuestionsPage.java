@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AnswerSecurityQuestionsPage {
-    public AnswerSecurityQuestionsPage (){
+    public AnswerSecurityQuestionsPage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy (xpath = "//a[@role='button']")
+    @FindBy(xpath = "//a[@role='button']")
     public WebElement Start;
 }

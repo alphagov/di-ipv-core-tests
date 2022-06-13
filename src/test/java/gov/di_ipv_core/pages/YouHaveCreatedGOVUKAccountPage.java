@@ -6,9 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class YouHaveCreatedGOVUKAccountPage {
-    public YouHaveCreatedGOVUKAccountPage(){
+    public YouHaveCreatedGOVUKAccountPage() {
         PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy(id = "button")
     public WebElement Continue;
 }

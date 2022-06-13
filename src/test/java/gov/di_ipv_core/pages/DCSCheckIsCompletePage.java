@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class DCSCheckIsCompletePage {
-    public DCSCheckIsCompletePage(){
-        PageFactory.initElements(Driver.get(),this);
+    public DCSCheckIsCompletePage() {
+        PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(id="header")
+    @FindBy(id = "header")
     public WebElement DCSCheckIsComplete;
 }
