@@ -6,13 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProveYourIdentityWithGOVUKAccount {
-    public ProveYourIdentityWithGOVUKAccount(){
-        PageFactory.initElements(Driver.get(),this);
+    public ProveYourIdentityWithGOVUKAccount() {
+        PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy(xpath = "//input[@id='chooseWayPyi']")
     public WebElement ContinueToSignInOrCreateGOVUKAccount;
 
-    @FindBy (xpath = "//*[@id=\"cookies-banner-main\"]/div[2]/button[1]")
+    @FindBy(xpath = "//*[@id=\"cookies-banner-main\"]/div[2]/button[1]")
     public WebElement AcceptCookies;
 
     @FindBy(id = "cookies-accepted")

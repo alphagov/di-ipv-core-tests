@@ -38,13 +38,14 @@ public class OpeningPageSteps {
     @When("user clicks on Open Government Licence hyperlink")
     public void user_clicks_on_Open_Government_Licence_hyperlink() {
         new OpeningPage().OpenGovernmentLicenceHyperlink.click();
-        BrowserUtils.waitForPageToLoad(5);   }
+        BrowserUtils.waitForPageToLoad(5);
+    }
 
     @Then("user is is Open Government Licence page")
     public void user_is_is_Open_Government_Licence_page() {
         String expectedUrl = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/";
         String actualUrl = Driver.get().getCurrentUrl();
-        Assert.assertEquals(expectedUrl,actualUrl);
+        Assert.assertEquals(expectedUrl, actualUrl);
     }
 
     @Given("user is in firefox page")
@@ -58,6 +59,7 @@ public class OpeningPageSteps {
         new OpeningPage().ProveYourIdentityButton.click();
         BrowserUtils.waitForPageToLoad(1);
     }
+
     @Then("user is on core page")
     public void user_is_on_core_page() {
         System.out.println("User is on Core page");

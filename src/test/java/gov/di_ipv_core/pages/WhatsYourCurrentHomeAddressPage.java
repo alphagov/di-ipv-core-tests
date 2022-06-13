@@ -13,7 +13,7 @@ public class WhatsYourCurrentHomeAddressPage {
     @FindBy(id = "addressSearch")
     public WebElement Postcode;
 
-    @FindBy (xpath = "//button[@class='govuk-button button']")
+    @FindBy(xpath = "//button[@class='govuk-button button']")
     public WebElement FindAddressButton;
 
     @FindBy(id = "addressResults")

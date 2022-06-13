@@ -6,9 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CoreFrontPage {
-    public CoreFrontPage(){
+    public CoreFrontPage() {
         PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy(xpath = "//a[normalize-space()='KBV (Stub)']")
     public WebElement KBV;
 

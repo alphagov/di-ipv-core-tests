@@ -49,9 +49,9 @@ public class ConfigurationReader {
         return coreStubUrl;
     }
 
-    public static String getSampleServiceStagingUrl(){
+    public static String getSampleServiceStagingUrl() {
         String sampleServiceUrl = System.getenv("SAMPLE_SERVICE_STAGING_URL");
-        if (sampleServiceUrl==null){
+        if (sampleServiceUrl == null) {
             throw new IllegalArgumentException("Environment variable SAMPLE_SERVICE_STAGING_URL is not set ");
         }
         return sampleServiceUrl;

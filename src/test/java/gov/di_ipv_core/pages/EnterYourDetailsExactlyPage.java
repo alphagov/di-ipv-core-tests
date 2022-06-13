@@ -6,44 +6,42 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class EnterYourDetailsExactlyPage {
-    public EnterYourDetailsExactlyPage(){
-        PageFactory.initElements(Driver.get(),this);
+    public EnterYourDetailsExactlyPage() {
+        PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(id="passportNumber")
+    @FindBy(id = "passportNumber")
     public WebElement PassportNumber;
 
-    @FindBy (id="surname")
+    @FindBy(id = "surname")
     public WebElement Surname;
 
-    @FindBy(id="firstName")
+    @FindBy(id = "firstName")
     public WebElement Firstname;
 
-    @FindBy(id="middleNames")
+    @FindBy(id = "middleNames")
     public WebElement Middlenames;
 
-    @FindBy (id= "dateOfBirth-day")
+    @FindBy(id = "dateOfBirth-day")
     public WebElement DayOfBirth;
 
-    @FindBy (id = "dateOfBirth-month")
+    @FindBy(id = "dateOfBirth-month")
     public WebElement MonthOfBirth;
 
-    @FindBy (id = "dateOfBirth-year")
+    @FindBy(id = "dateOfBirth-year")
     public WebElement YearOfBirth;
 
-    @FindBy (id = "expiryDate-day")
+    @FindBy(id = "expiryDate-day")
     public WebElement PassportExpiryDay;
 
-    @FindBy (id = "expiryDate-month")
+    @FindBy(id = "expiryDate-month")
     public WebElement PassportExpiryMonth;
 
-    @FindBy (id = "expiryDate-year")
+    @FindBy(id = "expiryDate-year")
     public WebElement PassportExpiryYear;
 
-    @FindBy (xpath = "//button[@class='govuk-button button']")
+    @FindBy(xpath = "//button[@class='govuk-button button']")
     public WebElement Continue;
-
-
 
 
 }

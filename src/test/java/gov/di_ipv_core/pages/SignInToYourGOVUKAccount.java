@@ -6,12 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SignInToYourGOVUKAccount {
-    public SignInToYourGOVUKAccount (){
-        PageFactory.initElements(Driver.get(),this);
+    public SignInToYourGOVUKAccount() {
+        PageFactory.initElements(Driver.get(), this);
     }
-    @FindBy (id = "email")
+
+    @FindBy(id = "email")
     public WebElement EmailAddress;
 
-    @FindBy (xpath = "//button[@type='Submit']")
+    @FindBy(xpath = "//button[@type='Submit']")
     public WebElement Continue;
 }

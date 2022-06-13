@@ -7,10 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class OpeningPage {
 
-    public OpeningPage(){
+    public OpeningPage() {
 
         PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy(xpath = "//input[@value='Prove your identity']")
     public WebElement ProveYourIdentityButton;
 

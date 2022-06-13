@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CoreStubCrisPage {
-    public CoreStubCrisPage(){
+    public CoreStubCrisPage() {
         PageFactory.initElements(Driver.get(), this);
     }
 

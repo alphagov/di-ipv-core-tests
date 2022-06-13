@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddressStubPage {
-    public AddressStubPage (){
+    public AddressStubPage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(id ="jsonPayload")
+    @FindBy(id = "jsonPayload")
     public WebElement JSONPayLoader;
 
-    @FindBy (xpath = "//input[@name='submit']")
+    @FindBy(xpath = "//input[@name='submit']")
     public WebElement SubmitDataAndGenerateAuthCode;
 }
