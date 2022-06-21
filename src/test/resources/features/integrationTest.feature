@@ -34,8 +34,9 @@ Feature: Full journey of Auth - Core - KBV -TxMA Integration
     And the user enters the year that they started living at that address
     Then the user should be shown their address and the move year on `Check your details` page
     When the user clicks on `Continue` on `Check your details` page
+#    Then Address CRI S3 shows an evidence of activity
 ##  PHASE 3: FRAUD
-#  Then the user should land on `Fraud CRI` page
+    Then the user should land on `Fraud Check Stub` page
 #  When the user clicks on `Continue`
 ##    Then the confirmation is created in S3 (Backend test)
 #  Then the user lands on `KBV CRI` page
@@ -46,3 +47,5 @@ Feature: Full journey of Auth - Core - KBV -TxMA Integration
 #    #fraud cri test + Check TxMA
 #    #kbv cri test + Check TxMA
 #    #Check SPOT response (in AWS)
+
+

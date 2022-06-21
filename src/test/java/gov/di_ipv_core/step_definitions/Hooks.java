@@ -37,7 +37,7 @@ public class Hooks {
 
     @AfterAll
     public static void quitDriver() {
-        Driver.closeDriver();
+//        Driver.closeDriver();
 
     }
 }

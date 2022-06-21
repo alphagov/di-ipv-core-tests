@@ -25,13 +25,15 @@ import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
 import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+import sun.java2d.pipe.hw.AccelTypedVolatileImage;
+import sun.java2d.pipe.hw.AccelTypedVolatileImage;
 
 
 public class IntegrationSteps {
 
     String KennethName = "KENNETH";
     String KennethSurname = "DECERQUEIRA";
-    String KennethBirthDay = "07";
+    String KennethBirthDay = "18";
     String KennethBirthMonth = "11";
     String KennethBirthYear = "1964";
     String KennethPassportExpiryDay = "01";
@@ -167,6 +169,7 @@ public class IntegrationSteps {
         new EnterYourDetailsExactlyPage().PassportExpiryYear.sendKeys(KennethPassportExpiryYear);
         BrowserUtils.waitFor(3);
         new EnterYourDetailsExactlyPage().Continue.click();
+
         BrowserUtils.waitForPageToLoad(10);
     }
 
@@ -211,6 +214,16 @@ public class IntegrationSteps {
         new CheckYourDetails().Continue.click();
         BrowserUtils.waitFor(2);
     }
+
+    @Then("the user should land on `Fraud Check Stub` page")
+    public void the_user_should_land_on_fraud_check_stub_page() {
+        String expectedTitleForFraudStub ="Example - GOV.UK";
+        String actualTitleForFraudStub  = Driver.get().getTitle();
+        Assert.assertEquals(expectedTitleForFraudStub, actualTitleForFraudStub);
+        System.out.println("expectedTitleForFraudStub = " + expectedTitleForFraudStub);
+        System.out.println("actualTitleForFraudStub = " + actualTitleForFraudStub);
+    }
+
 
 
 }
