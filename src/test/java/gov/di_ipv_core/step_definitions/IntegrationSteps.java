@@ -216,8 +216,3 @@ public class IntegrationSteps {
         BrowserUtils.waitFor(2);
     }
 }
-
-
-
-
-
