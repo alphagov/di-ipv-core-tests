@@ -110,7 +110,6 @@ public class IntegrationSteps {
                 WaiterOverrideConfiguration
                         .builder()
                         .backoffStrategy(BackoffStrategy.defaultStrategy())
-                        .maxAttempts(10)
                         .waitTimeout(Duration.of(3, ChronoUnit.MINUTES))
                         .build()).matched();
 
