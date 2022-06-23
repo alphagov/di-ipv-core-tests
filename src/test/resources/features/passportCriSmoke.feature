@@ -16,7 +16,6 @@ Feature: Full journey with UK Passport CRI
   Scenario: Successful journey from core
     Given I am on Orchestrator Stub
     When I click on Debug route
-    Then I should get five options
     When I click on ukPassport
     And I fill in my details
     And I click continue
