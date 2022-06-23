@@ -6,7 +6,7 @@ Feature: Testing `Full E2E journey route` on Sample service staging Stub. Happy 
     Given I am on Staging service sample Stub
     When I click on `P2` AND 'Continue'
     Then I should be on `sign-in-or-create` page
-    Then I click on 'sign in'
+    AND I click on 'sign in'
     When I enter a registered 'email address'
     AND  I click `Continue`
     Then I should be able to enter a 'valid password` 
@@ -23,7 +23,7 @@ Feature: Testing `Full E2E journey route` on Sample service staging Stub. Happy 
     And I click 'Select Address'
     When I Input a  valid Year which is <1 years in "When did you start living at this address?'
     AND I click 'Continue'
-    Then I should be able to click on 'I confirm that my details are correct'
+    AND I should be able to click on 'I confirm that my details are correct'
     Then I should be on Fraud Check AND I can prove my identity
     AND I Click 'Continue'
     Then I should be on `Answer security questions` page 
