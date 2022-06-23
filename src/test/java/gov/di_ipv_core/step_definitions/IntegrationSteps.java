@@ -1,19 +1,22 @@
 package gov.di_ipv_core.step_definitions;
 
-import gov.di_ipv_core.pages.*;
+import gov.di_ipv_core.pages.CheckYourDetails;
+import gov.di_ipv_core.pages.CheckYourPhonePage;
+import gov.di_ipv_core.pages.CreateGOVUKAccountOrSignInPage;
+import gov.di_ipv_core.pages.EnterYourDetailsExactlyPage;
+import gov.di_ipv_core.pages.EnterYourEmailAddressPage;
+import gov.di_ipv_core.pages.EnterYourPasswordPage;
+import gov.di_ipv_core.pages.ProveYourIdentityWithGOVUKAccount;
+import gov.di_ipv_core.pages.SampleServiceStagingPage;
+import gov.di_ipv_core.pages.SignInToYourGOVUKAccount;
+import gov.di_ipv_core.pages.WhatsYourCurrentHomeAddressPage;
+import gov.di_ipv_core.pages.YouHaveSignedInToYourGOVUKAccountPage;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.io.IOException;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
 import software.amazon.awssdk.core.ResponseBytes;
@@ -24,7 +27,10 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
-import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
 
 public class IntegrationSteps {
@@ -42,8 +48,6 @@ public class IntegrationSteps {
     //Address: 8 Hadley Road, Bath,
 
     final String KENNETH_PASSPORT_NUMBER = "321654987";
-    final String BUCKET_NAME = "staging-smoke-test-sms-codes";
-    final String OBJECT_NAME = "+447700900222";
     S3Client s3Client = S3Client.builder().region(Region.EU_WEST_2).build();
 
 
@@ -100,8 +104,8 @@ public class IntegrationSteps {
         s3Client.waiter().waitUntilObjectExists(
                 HeadObjectRequest
                         .builder()
-                        .bucket(BUCKET_NAME)
-                        .key(OBJECT_NAME)
+                        .bucket(ConfigurationReader.getAuthCodeBucketName())
+                        .key(ConfigurationReader.getAuthCodeKeyName())
                         .build(),
                 WaiterOverrideConfiguration
                         .builder()
@@ -112,8 +116,8 @@ public class IntegrationSteps {
 
         ResponseBytes<GetObjectResponse> response = s3Client.getObjectAsBytes(GetObjectRequest
                 .builder()
-                .bucket(BUCKET_NAME)
-                .key(OBJECT_NAME)
+                .bucket(ConfigurationReader.getAuthCodeBucketName())
+                .key(ConfigurationReader.getAuthCodeKeyName())
                 .build());
 
         String code = response.asUtf8String();
@@ -211,8 +215,6 @@ public class IntegrationSteps {
         new CheckYourDetails().Continue.click();
         BrowserUtils.waitFor(2);
     }
-
-
 }
 
 

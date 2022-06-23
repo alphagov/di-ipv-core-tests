@@ -34,27 +34,31 @@ public class ConfigurationReader {
     }
 
     public static String getOrchestratorUrl() {
-        String orchestratorStubUrl = System.getenv("ORCHESTRATOR_STUB_URL");
-        if (orchestratorStubUrl == null) {
-            throw new IllegalArgumentException("Environment variable ORCHESTRATOR_STUB_URL is not set");
-        }
-        return orchestratorStubUrl;
+        return getEnvironmentVariableOrError("ORCHESTRATOR_STUB_URL");
     }
 
     public static String getCoreStubUrl() {
-        String coreStubUrl = System.getenv("CORE_STUB_URL");
-        if (coreStubUrl == null) {
-            throw new IllegalArgumentException("Environment variable CORE_STUB_URL is not set");
-        }
-        return coreStubUrl;
+        return getEnvironmentVariableOrError("CORE_STUB_URL");
     }
 
     public static String getSampleServiceStagingUrl() {
-        String sampleServiceUrl = System.getenv("SAMPLE_SERVICE_STAGING_URL");
-        if (sampleServiceUrl == null) {
-            throw new IllegalArgumentException("Environment variable SAMPLE_SERVICE_STAGING_URL is not set ");
+        return getEnvironmentVariableOrError("SAMPLE_SERVICE_STAGING_URL");
+    }
+
+    public static String getAuthCodeBucketName() {
+        return getEnvironmentVariableOrError("AUTH_CODE_BUCKET_NAME");
+    }
+
+    public static String getAuthCodeKeyName() {
+        return getEnvironmentVariableOrError("AUTH_CODE_KEY_NAME");
+    }
+
+    private static String getEnvironmentVariableOrError(String variable) {
+        String value = System.getenv(variable);
+        if (value == null) {
+            throw new IllegalArgumentException(String.format("Environment variable %s is not set", variable));
         }
-        return sampleServiceUrl;
+        return value;
     }
 
     public static boolean noChromeSandbox() {
