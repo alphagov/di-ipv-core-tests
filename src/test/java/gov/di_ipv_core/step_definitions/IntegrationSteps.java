@@ -111,7 +111,7 @@ public class IntegrationSteps {
                         .builder()
                         .backoffStrategy(BackoffStrategy.defaultStrategy())
                         .maxAttempts(10)
-                        .waitTimeout(Duration.of(30, ChronoUnit.SECONDS))
+                        .waitTimeout(Duration.of(3, ChronoUnit.MINUTES))
                         .build()).matched();
 
         ResponseBytes<GetObjectResponse> response = s3Client.getObjectAsBytes(GetObjectRequest
