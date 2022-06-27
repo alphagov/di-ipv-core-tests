@@ -4,16 +4,9 @@ import gov.di_ipv_core.pages.*;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.io.IOException;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
 import software.amazon.awssdk.core.ResponseBytes;
