@@ -12,4 +12,6 @@ public class DCSCheckIsCompletePage {
 
     @FindBy(id = "header")
     public WebElement DCSCheckIsComplete;
+
+
 }

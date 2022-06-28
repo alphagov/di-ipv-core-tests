@@ -39,4 +39,28 @@ public class PassportSteps {
         Assert.assertTrue(new DCSCheckIsCompletePage().DCSCheckIsComplete.isDisplayed());
     }
 
+    @Then("proper error message for invalid passport number should be displayed")
+    public void properErrorMessageForInvalidPassportNumberShouldBeDisplayed() {
+        Assert.assertTrue(new PassportPage().InvalidPassportNumberError.isDisplayed());
+    }
+
+    @Then("proper error message for invalid First Name should be displayed")
+    public void properErrorMessageForInvalidFirstNameShouldBeDisplayed() {
+        Assert.assertTrue(new PassportPage().InvalidPassportFirstName.isDisplayed());
+    }
+
+    @Then("proper error message for invalid Surname should be displayed")
+    public void properErrorMessageForInvalidSurnameShouldBeDisplayed() {
+        Assert.assertTrue(new PassportPage().InvalidPassportSurname.isDisplayed());
+    }
+
+    @Then("proper error message for invalid Date of Birth should be displayed")
+    public void properErrorMessageForInvalidDateOfBirthShouldBeDisplayed() {
+        Assert.assertTrue(new PassportPage().InvalidDOB.isDisplayed());
+    }
+
+    @Then("proper error message for invalid Expiry Date should be displayed")
+    public void properErrorMessageForInvalidExpiryDateShouldBeDisplayed() {
+        Assert.assertTrue(new PassportPage().InvalidExpiryDate.isDisplayed());
+    }
 }

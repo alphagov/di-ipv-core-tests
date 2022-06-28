@@ -10,7 +10,8 @@ public class ProveYourIdentityWithGOVUKAccount {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(xpath = "//input[@id='chooseWayPyi']")
+    //@FindBy(xpath = "//input[@id='chooseWayPyi']")
+    @FindBy(xpath = "//*[@id=\"sign-in-link\"]")
     public WebElement ContinueToSignInOrCreateGOVUKAccount;
 
     @FindBy(xpath = "//*[@id=\"cookies-banner-main\"]/div[2]/button[1]")

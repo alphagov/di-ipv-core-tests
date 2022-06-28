@@ -7,6 +7,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PassportPage {
 
+    @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']//*[contains(@href,'#passportNumber')]")
+    public WebElement InvalidPassportNumberError;
+
+    @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']//*[contains(@href,'#firstName')]")
+    public WebElement InvalidPassportFirstName;
+
+    @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']//*[contains(@href,'#surname')]")
+    public WebElement InvalidPassportSurname;
+
+    @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']//*[contains(@href,'#dateOfBirth-day')]")
+    public WebElement InvalidDOB;
+
+        @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']//*[contains(@href,'#expiryDate-day')]")
+    public WebElement InvalidExpiryDate;
+
     public PassportPage() {
         PageFactory.initElements(Driver.get(), this);
     }
@@ -17,7 +32,7 @@ public class PassportPage {
     @FindBy(id = "surname")
     public WebElement Surname;
 
-    @FindBy(id = "firstName")
+    @FindBy(xpath = "//*[@id=\"firstName\"]")
     public WebElement FirstName;
 
     @FindBy(id = "middleNames")
@@ -43,6 +58,5 @@ public class PassportPage {
 
     @FindBy(xpath = "//button[@class='govuk-button button']")
     public WebElement Continue;
-
 
 }
