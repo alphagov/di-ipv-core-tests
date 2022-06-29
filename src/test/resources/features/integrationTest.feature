@@ -1,7 +1,7 @@
 Feature: Full journey of Auth - Core - KBV -TxMA Integration
   Integration Checks (Black Box)
   KENNETH DECERQUEIRA has got a valid GOV.UK account
-    KENNETH DECERQUEIRA, dob: 18-11-1964, passport expiry: 01-01-2030
+  KENNETH DECERQUEIRA, dob: 18-11-1964, passport expiry: 01-01-2030
   Address: 8 Hadley Road, Bath, BA2 5AA
   PASSPORT_NUMBER = 321654987
   email: simulate-delivered-3@notifications.service.gov.uk
@@ -44,3 +44,10 @@ Feature: Full journey of Auth - Core - KBV -TxMA Integration
 #    #fraud cri test + Check TxMA
 #    #kbv cri test + Check TxMA
 #    #Check SPOT response (in AWS)
+
+  @integration_test
+  Scenario: Happy path with Kenneth Decerqueira with Alert for User credentials
+  Given the user on `Sample Service - Staging` page
+    And the user has 2FA enabled as well as P2 Level of confidence and claims ticked
+    When the user clicks on `Continue`
+    Then the new user is directed to the `Prove your identity and provide user details and click

@@ -45,13 +45,13 @@ public class ConfigurationReader {
         return getEnvironmentVariableOrError("SAMPLE_SERVICE_STAGING_URL");
     }
 
-    public static String getAuthCodeBucketName() {
+/*    public static String getAuthCodeBucketName() {
         return getEnvironmentVariableOrError("AUTH_CODE_BUCKET_NAME");
     }
 
     public static String getAuthCodeKeyName() {
         return getEnvironmentVariableOrError("AUTH_CODE_KEY_NAME");
-    }
+    }*/
 
     private static String getEnvironmentVariableOrError(String variable) {
         String value = System.getenv(variable);

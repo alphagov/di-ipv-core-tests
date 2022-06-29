@@ -1,36 +1,18 @@
 package gov.di_ipv_core.step_definitions;
 
-import gov.di_ipv_core.pages.CheckYourDetails;
-import gov.di_ipv_core.pages.CheckYourPhonePage;
-import gov.di_ipv_core.pages.CreateGOVUKAccountOrSignInPage;
-import gov.di_ipv_core.pages.EnterYourDetailsExactlyPage;
-import gov.di_ipv_core.pages.EnterYourEmailAddressPage;
-import gov.di_ipv_core.pages.EnterYourPasswordPage;
-import gov.di_ipv_core.pages.ProveYourIdentityWithGOVUKAccount;
-import gov.di_ipv_core.pages.SampleServiceStagingPage;
-import gov.di_ipv_core.pages.SignInToYourGOVUKAccount;
-import gov.di_ipv_core.pages.WhatsYourCurrentHomeAddressPage;
-import gov.di_ipv_core.pages.YouHaveSignedInToYourGOVUKAccountPage;
+import gov.di_ipv_core.pages.*;
 import gov.di_ipv_core.utilities.BrowserUtils;
-import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.Select;
-import software.amazon.awssdk.core.ResponseBytes;
-import software.amazon.awssdk.core.retry.backoff.BackoffStrategy;
-import software.amazon.awssdk.core.waiters.WaiterOverrideConfiguration;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.GetObjectRequest;
-import software.amazon.awssdk.services.s3.model.GetObjectResponse;
-import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
 
 import java.io.IOException;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 
 public class IntegrationSteps {
@@ -53,7 +35,8 @@ public class IntegrationSteps {
 
     @Given("the user on `Sample Service - Staging` page")
     public void the_user_on_sample_service_staging_page() {
-        Driver.get().get(ConfigurationReader.getSampleServiceStagingUrl());
+        //Driver.get().get(ConfigurationReader.getSampleServiceStagingUrl());
+        Driver.get().get("https://di-auth-stub-relying-party-integration.london.cloudapps.digital/");
         BrowserUtils.waitForPageToLoad(10);
     }
 
@@ -101,11 +84,11 @@ public class IntegrationSteps {
 
     @Then("the user enters their six digit code")
     public void the_user_enters_their_six_digit_code() throws Throwable {
-        s3Client.waiter().waitUntilObjectExists(
-                HeadObjectRequest
-                        .builder()
-                        .bucket(ConfigurationReader.getAuthCodeBucketName())
-                        .key(ConfigurationReader.getAuthCodeKeyName())
+        //s3Client.waiter().waitUntilObjectExists(
+                // HeadObjectRequest
+                 //       .builder()
+                //        .bucket(ConfigurationReader.getAuthCodeBucketName())
+                /*        .key(ConfigurationReader.getAuthCodeKeyName())
                         .build(),
                 WaiterOverrideConfiguration
                         .builder()
@@ -115,16 +98,16 @@ public class IntegrationSteps {
 
         ResponseBytes<GetObjectResponse> response = s3Client.getObjectAsBytes(GetObjectRequest
                 .builder()
-                .bucket(ConfigurationReader.getAuthCodeBucketName())
+         //       .bucket(ConfigurationReader.getAuthCodeBucketName())
                 .key(ConfigurationReader.getAuthCodeKeyName())
-                .build());
+                .build());*/
 
-        String code = response.asUtf8String();
+/*        String code = response.asUtf8String();
         System.out.println("code = " + code);
 
 
         new CheckYourPhonePage().EnterSixDigitSecurityCode.sendKeys(code);
-        new CheckYourPhonePage().Continue.click();
+        new CheckYourPhonePage().Continue.click();*/
     }
 
     @When("the new user selects `Create a GOV.UK account`")
@@ -213,5 +196,23 @@ public class IntegrationSteps {
     public void the_user_clicks_on_continue_on_check_your_details_page() {
         new CheckYourDetails().Continue.click();
         BrowserUtils.waitFor(2);
+    }
+
+    @Then("the new user is directed to the `Prove your identity and provide user details and click")
+    public void theNewUserIsDirectedToTheProveYourIdentityAndProvideUserDetailsAndClick() {
+        Driver driver = null;
+        final String username = "integration-user";
+        final String password = "winter2021";
+        //new WebDriverWait(driver, 10).until(ExpectedConditions.alertIsPresent());
+        Alert alert = Driver.get().switchTo().alert()    .get().switchTo().alert();
+        alert.sendKeys(username);
+        //Thread.sleep(1);
+        alert.sendKeys(password);
+        //Thread.sleep(1);
+        alert.accept();
+        //Thread.sleep(1);
+        //WebDriver.switchTo().window();
+        //WebDriver.switchTo().alert().accept();
+        //Driver.switchAlert();
     }
 }
