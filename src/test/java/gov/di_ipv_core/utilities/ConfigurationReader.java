@@ -57,6 +57,16 @@ public class ConfigurationReader {
         return sampleServiceUrl;
     }
 
+    public static String getSampleServiceIntegrationUrl() {
+        String sampleServiceIntegrationUrl = System.getenv("SAMPLE_SERVICE_INTEGRATION_URL");
+        if (sampleServiceIntegrationUrl == null) {
+            throw new IllegalArgumentException("Environment variable SAMPLE_SERVICE_STAGING_URL is not set ");
+        }
+        return sampleServiceIntegrationUrl;
+    }
+
+
+
     public static boolean noChromeSandbox() {
         return "true".equalsIgnoreCase(System.getenv("NO_CHROME_SANDBOX"));
     }

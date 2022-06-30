@@ -6,16 +6,24 @@ import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.cs.Ale;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import software.amazon.awssdk.core.ResponseBytes;
 import software.amazon.awssdk.core.retry.backoff.BackoffStrategy;
 import software.amazon.awssdk.core.waiters.WaiterOverrideConfiguration;
@@ -25,13 +33,16 @@ import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
 import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+import org.openqa.selenium.WebDriver;
+
+import javax.swing.table.TableRowSorter;
 
 
 public class IntegrationSteps {
 
     String KennethName = "KENNETH";
     String KennethSurname = "DECERQUEIRA";
-    String KennethBirthDay = "18";
+    String KennethBirthDay = "26";
     String KennethBirthMonth = "11";
     String KennethBirthYear = "1964";
     String KennethPassportExpiryDay = "01";
@@ -39,7 +50,6 @@ public class IntegrationSteps {
     String KennethPassportExpiryYear = "2030";
     String KennethPostcode = "BA2 5AA";
     String KennethFullAddress = "8 HADLEY ROAD, BATH, BA2 5AA";
-    //Address: 8 Hadley Road, Bath,
 
     final String KENNETH_PASSPORT_NUMBER = "321654987";
     final String BUCKET_NAME = "staging-smoke-test-sms-codes";
@@ -51,24 +61,28 @@ public class IntegrationSteps {
     public void the_user_on_sample_service_staging_page() {
         Driver.get().get(ConfigurationReader.getSampleServiceStagingUrl());
         BrowserUtils.waitForPageToLoad(10);
+
     }
 
     @Given("the user has 2FA enabled as well as P2 Level of confidence and claims ticked")
     public void the_user_has_2fa_enabled_as_well_as_p2_level_of_confidence_and_claims_ticked() {
         new SampleServiceStagingPage().P2.click();
         BrowserUtils.waitForPageToLoad(10);
+
     }
 
     @When("the user clicks on `Continue`")
-    public void the_user_clicks_on_continue() {
+    public void the_user_clicks_on_continue() throws InterruptedException {
         new SampleServiceStagingPage().Continue.click();
         BrowserUtils.waitForPageToLoad(10);
+
     }
 
     @Then("the new user is directed to the `Prove your identity with a GOVUK account page`")
     public void the_new_user_is_directed_to_the_prove_your_identity_with_a_govuk_account_page() {
         new ProveYourIdentityWithGOVUKAccount().AcceptCookies.click();
         BrowserUtils.waitForPageToLoad(10);
+
     }
 
     @When("the new user selects `Continue to sign in or create a GOV.UK account`")
@@ -215,14 +229,69 @@ public class IntegrationSteps {
 
     @Then("the user should land on `Fraud Check Stub` page")
     public void the_user_should_land_on_fraud_check_stub_page() {
-        String expectedTitleForFraudStub ="Example - GOV.UK";
-        String actualTitleForFraudStub  = Driver.get().getTitle();
-        Assert.assertEquals(expectedTitleForFraudStub, actualTitleForFraudStub);
-        System.out.println("expectedTitleForFraudStub = " + expectedTitleForFraudStub);
-        System.out.println("actualTitleForFraudStub = " + actualTitleForFraudStub);
+        Assert.assertTrue(new CheckingYourDetailsPage().Continue.isDisplayed());
     }
 
+    @When("the user completes Fraud Check Stub")
+    public void the_user_completes_fraud_check_stub() {
+        BrowserUtils.waitFor(1);
+        new CheckingYourDetailsPage().Continue.click();
+        BrowserUtils.waitForPageToLoad(10);
 
+    }
+
+    @Then("the user should land on `Answer Security Questions` page")
+    public void the_user_should_land_on_answer_security_questions_page() {
+        Assert.assertTrue(new AnswerSecurityQuestionsPage().Continue.isDisplayed());
+        BrowserUtils.waitFor(1);
+    }
+
+    @When("the user clicks `Continue` on `Answer Security Questions` page")
+    public void the_user_clicks_continue_on_answer_security_questions_page() {
+        new AnswerSecurityQuestionsPage().Continue.click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @Then("the user is shown the First Question")
+    public void the_user_is_shown_the_first_question() {
+        String expectedQuestion = "Question 1";
+        String actualQuestion = new QuestionOnePage().QuestionOne.getText();
+        System.out.println("expectedQuestion = " + expectedQuestion);
+        System.out.println("actualQuestion = " + actualQuestion);
+        Assert.assertEquals(expectedQuestion, actualQuestion);
+    }
+
+    @When("the user selects the correct answer and clicks `Continue`")
+    public void the_user_selects_the_correct_answer_and_clicks_continue() {
+        new QuestionOnePage().Correct1.click();
+        new QuestionOnePage().Continue.click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @Then("the user is shown the Second Question")
+    public void the_user_is_shown_the_second_question() {
+        String expectedQuestion = "Question 2";
+        String actualQuestion = new QuestionTwoPage().QuestionTwo.getText();
+        System.out.println("expectedQuestion = " + expectedQuestion);
+        System.out.println("actualQuestion = " + actualQuestion);
+        Assert.assertEquals(expectedQuestion, actualQuestion);
+    }
+
+    @When("the user selects the second correct answer and clicks `Continue`")
+    public void the_user_selects_the_second_correct_answer_and_clicks_continue() {
+        new QuestionTwoPage().Correct2.click();
+        new QuestionTwoPage().Continue.click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @Then("the user should be on `You have successfully proved your identity` page")
+    public void the_user_should_be_on_you_have_successfully_proved_your_identity_page() {
+        String expectedURL = "https://identity.staging.account.gov.uk/ipv/page/page-ipv-success";
+        String actualURL = Driver.get().getCurrentUrl();
+        System.out.println("expectedURL = " + expectedURL);
+        System.out.println("actualURL = " + actualURL);
+        Assert.assertEquals(expectedURL, actualURL);
+    }
 
 }
 

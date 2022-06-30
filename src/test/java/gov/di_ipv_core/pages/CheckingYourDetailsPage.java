@@ -5,14 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AnswerSecurityQuestionsPage {
-    public AnswerSecurityQuestionsPage() {
+public class CheckingYourDetailsPage {
+    public CheckingYourDetailsPage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(xpath = "//a[@role='button']")
-    public WebElement Start;
-
-    @FindBy(xpath = "//a[@class='govuk-button']")
+    @FindBy(xpath = "//button[@class='govuk-button button']")
     public WebElement Continue;
 }

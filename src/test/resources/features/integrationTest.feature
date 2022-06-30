@@ -28,7 +28,7 @@ Feature: Full journey of Auth - Core - KBV -TxMA Integration
     When the user enters their passport details and clicks on `Continue`
     Then the user should be on `What's your current home address` page
 #    Then the event is logged in SQS `TxMA`
-#    #address cri test + Check TxMA
+#    #Address cri test + Check TxMA
     When the user enters their postcode and click on `Find address` button
     And the user selects their address from the dropdown menu and click on `Select address` button
     And the user enters the year that they started living at that address
@@ -37,10 +37,17 @@ Feature: Full journey of Auth - Core - KBV -TxMA Integration
 #    Then Address CRI S3 shows an evidence of activity
 ##  PHASE 3: FRAUD
     Then the user should land on `Fraud Check Stub` page
-#  When the user clicks on `Continue`
+    When the user completes Fraud Check Stub
+    Then the user should land on `Answer Security Questions` page
 ##    Then the confirmation is created in S3 (Backend test)
 #  Then the user lands on `KBV CRI` page
 ##  PHASE 4: KBV
+    When the user clicks `Continue` on `Answer Security Questions` page
+    Then the user is shown the First Question
+    When the user selects the correct answer and clicks `Continue`
+    Then the user is shown the Second Question
+    When the user selects the second correct answer and clicks `Continue`
+    Then the user should be on `You have successfully proved your identity` page
 
 
 
