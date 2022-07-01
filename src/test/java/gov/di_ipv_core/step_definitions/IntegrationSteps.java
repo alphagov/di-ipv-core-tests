@@ -37,6 +37,10 @@ import org.openqa.selenium.WebDriver;
 
 import javax.swing.table.TableRowSorter;
 
+import java.io.IOException;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
 
 public class IntegrationSteps {
 
@@ -52,8 +56,6 @@ public class IntegrationSteps {
     String KennethFullAddress = "8 HADLEY ROAD, BATH, BA2 5AA";
 
     final String KENNETH_PASSPORT_NUMBER = "321654987";
-    final String BUCKET_NAME = "staging-smoke-test-sms-codes";
-    final String OBJECT_NAME = "+447700900222";
     S3Client s3Client = S3Client.builder().region(Region.EU_WEST_2).build();
 
 
@@ -114,20 +116,19 @@ public class IntegrationSteps {
         s3Client.waiter().waitUntilObjectExists(
                 HeadObjectRequest
                         .builder()
-                        .bucket(BUCKET_NAME)
-                        .key(OBJECT_NAME)
+                        .bucket(ConfigurationReader.getAuthCodeBucketName())
+                        .key(ConfigurationReader.getAuthCodeKeyName())
                         .build(),
                 WaiterOverrideConfiguration
                         .builder()
                         .backoffStrategy(BackoffStrategy.defaultStrategy())
-                        .maxAttempts(10)
-                        .waitTimeout(Duration.of(30, ChronoUnit.SECONDS))
+                        .waitTimeout(Duration.of(3, ChronoUnit.MINUTES))
                         .build()).matched();
 
         ResponseBytes<GetObjectResponse> response = s3Client.getObjectAsBytes(GetObjectRequest
                 .builder()
-                .bucket(BUCKET_NAME)
-                .key(OBJECT_NAME)
+                .bucket(ConfigurationReader.getAuthCodeBucketName())
+                .key(ConfigurationReader.getAuthCodeKeyName())
                 .build());
 
         String code = response.asUtf8String();
@@ -181,7 +182,6 @@ public class IntegrationSteps {
         new EnterYourDetailsExactlyPage().PassportExpiryYear.sendKeys(KennethPassportExpiryYear);
         BrowserUtils.waitFor(3);
         new EnterYourDetailsExactlyPage().Continue.click();
-
         BrowserUtils.waitForPageToLoad(10);
     }
 
@@ -294,8 +294,3 @@ public class IntegrationSteps {
     }
 
 }
-
-
-
-
-

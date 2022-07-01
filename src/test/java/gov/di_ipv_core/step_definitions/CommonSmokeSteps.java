@@ -1,12 +1,6 @@
 package gov.di_ipv_core.step_definitions;
 
-import gov.di_ipv_core.pages.CheckYourDetails;
-import gov.di_ipv_core.pages.DiIpvCoreFrontPage;
-import gov.di_ipv_core.pages.IpvCoreFrontPage;
-import gov.di_ipv_core.pages.OrchestratorStubPage;
-import gov.di_ipv_core.pages.PassportPage;
-import gov.di_ipv_core.pages.UserInformationPage;
-import gov.di_ipv_core.pages.WhatsYourCurrentHomeAddressPage;
+import gov.di_ipv_core.pages.*;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
@@ -32,6 +26,11 @@ public class CommonSmokeSteps {
     public void i_click_on_debug_route() {
         new OrchestratorStubPage().DebugRoute.click();
         BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @Then("I should get five options")
+    public void i_should_get_five_options() {
+        Assert.assertTrue(new IpvCoreFrontPage().UkPassport.isDisplayed());
     }
 
     @Then("I should be on `What's your current home address?` page")
@@ -120,4 +119,11 @@ public class CommonSmokeSteps {
         System.out.println("visibilityOfName = " + visibilityOfName);
         Assert.assertTrue(visibilityOfName);
     }
+
+    @When("I click on ukPassport\\(Stub)")
+    public void iClickOnUkPassportStub() {
+        new IpvCoreFrontPage().UkPassport.click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
 }
