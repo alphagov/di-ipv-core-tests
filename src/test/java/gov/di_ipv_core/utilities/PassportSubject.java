@@ -3,10 +3,10 @@ package gov.di_ipv_core.utilities;
 public enum PassportSubject implements TestInput {
     PassportSubjectHappy("321654987", "DECERQUEIRA", "KENNETH", "26", "11", "1964", "01", "01", "2030"),
     InvalidPassportNumber("ABCDEFGHI", "DECERQUEIRA", "KENNETH", "26", "11", "1964", "01", "01", "2030"),
-    InvalidfirstName("ABCDEFGHI", "DECERQUEIRA", "KENNE£4", "26", "11", "1964", "01", "01", "2030"),
-    Invalidsurname("ABCDEFGHI", "DECERQ&^%3RA", "KENNETH", "26", "11", "1964", "01", "01", "2030"),
-    InvalidDateofBirth("ABCDEFGHI", "DECERQ&^%3RA", "KENNETH", "26", "13", "1964", "01", "01", "2030"),
-    InvalidExpiryDate("ABCDEFGHI", "DECERQ&^%3RA", "KENNETH", "26", "12", "1964", "41", "01", "2030");
+    InvalidfirstName("321654987", "DECERQUEIRA", "KENNE£4", "26", "11", "1964", "01", "01", "2030"),
+    Invalidsurname("321654987", "DECERQ&^%3RA", "KENNETH", "26", "11", "1964", "01", "01", "2030"),
+    InvalidDateofBirth("321654987", "DECERQUEIRA", "KENNETH", "26", "13", "1964", "01", "01", "2030"),
+    InvalidExpiryDate("321654987", "DECERQUEIRA", "KENNETH", "26", "12", "1964", "41", "01", "2030");
 
     private String passportNumber, surname, givenName, birthDay, birthMonth, birthYear, expiryDay, expiryMonth, expiryYear;
 
