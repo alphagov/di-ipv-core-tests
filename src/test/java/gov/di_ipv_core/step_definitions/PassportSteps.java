@@ -4,6 +4,7 @@ import gov.di_ipv_core.pages.CoreFrontPage;
 import gov.di_ipv_core.pages.DCSCheckIsCompletePage;
 import gov.di_ipv_core.pages.PassportPage;
 import gov.di_ipv_core.utilities.BrowserUtils;
+import gov.di_ipv_core.utilities.PassportSubject;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -16,17 +17,17 @@ public class PassportSteps {
         BrowserUtils.waitForVisibility(new PassportPage().PassportNumber, 5);
     }
 
-    @When("user enters {string}, {string}, {string}, {string}, {string}, {string}, {string},{string} and {string}")
-    public void user_enters_and(String passportNumber, String surname, String name, String birthDay, String birthMonth, String birthYear, String expiryDay, String expiryMonth, String expiryYear) {
-        new PassportPage().PassportNumber.sendKeys(passportNumber);
-        new PassportPage().Surname.sendKeys(surname);
-        new PassportPage().FirstName.sendKeys(name);
-        new PassportPage().birthDay.sendKeys(birthDay);
-        new PassportPage().birthMonth.sendKeys(birthMonth);
-        new PassportPage().birthYear.sendKeys(birthYear);
-        new PassportPage().PassportExpiryDay.sendKeys(expiryDay);
-        new PassportPage().PassportExpiryMonth.sendKeys(expiryMonth);
-        new PassportPage().PassportExpiryYear.sendKeys(expiryYear);
+    @When("user enters data as a {}")
+    public void user_enters_and(PassportSubject passportSubject) {
+        new PassportPage().PassportNumber.sendKeys(passportSubject.getpassportNumber());
+        new PassportPage().Surname.sendKeys(passportSubject.getsurname());
+        new PassportPage().FirstName.sendKeys(passportSubject.getgivenName());
+        new PassportPage().birthDay.sendKeys(passportSubject.getbirthDay());
+        new PassportPage().birthMonth.sendKeys(passportSubject.getbirthMonth());
+        new PassportPage().birthYear.sendKeys(passportSubject.getbirthYear());
+        new PassportPage().PassportExpiryDay.sendKeys(passportSubject.getexpiryDay());
+        new PassportPage().PassportExpiryMonth.sendKeys(passportSubject.getexpiryMonth());
+        new PassportPage().PassportExpiryYear.sendKeys(passportSubject.getexpiryYear());
     }
 
     @When("user clicks on continue")
