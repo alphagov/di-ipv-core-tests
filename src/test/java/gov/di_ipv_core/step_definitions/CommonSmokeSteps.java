@@ -2,6 +2,7 @@ package gov.di_ipv_core.step_definitions;
 
 import gov.di_ipv_core.pages.*;
 import gov.di_ipv_core.utilities.BrowserUtils;
+import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +18,7 @@ public class CommonSmokeSteps {
 
     @Given("I am on Orchestrator Stub")
     public void i_am_on_orchestrator_stub() {
-        Driver.get().get("https://staging-di-ipv-orchestrator-stub.london.cloudapps.digital");
+        Driver.get().get(ConfigurationReader.getOrchestratorUrl());;
         BrowserUtils.waitForPageToLoad(10);
     }
 
