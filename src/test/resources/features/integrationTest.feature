@@ -1,12 +1,14 @@
 Feature: Full journey of Auth - Core - KBV -TxMA Integration
   Integration Checks (Black Box)
   KENNETH DECERQUEIRA has got a valid GOV.UK account
-    KENNETH DECERQUEIRA, dob: 18-11-1964, passport expiry: 01-01-2030
+  KENNETH DECERQUEIRA, dob: 23-08-1959, test dob: 18-11-1964, passport expiry: 01-01-2030
   Address: 8 Hadley Road, Bath, BA2 5AA
   PASSPORT_NUMBER = 321654987
   email: simulate-delivered-3@notifications.service.gov.uk
   Password: Ariane1974.
-  Mobile: +447700900
+  Mobile: +447700900222
+
+
   @integration_test
   Scenario: Happy path with Kenneth Decerqueira
 #    PHASE 1 - AUTH
@@ -26,21 +28,31 @@ Feature: Full journey of Auth - Core - KBV -TxMA Integration
     When the user enters their passport details and clicks on `Continue`
     Then the user should be on `What's your current home address` page
 #    Then the event is logged in SQS `TxMA`
-#    #address cri test + Check TxMA
+#    #Address cri test + Check TxMA
     When the user enters their postcode and click on `Find address` button
     And the user selects their address from the dropdown menu and click on `Select address` button
     And the user enters the year that they started living at that address
     Then the user should be shown their address and the move year on `Check your details` page
     When the user clicks on `Continue` on `Check your details` page
+#    Then Address CRI S3 shows an evidence of activity
 ##  PHASE 3: FRAUD
-#  Then the user should land on `Fraud CRI` page
-#  When the user clicks on `Continue`
+    Then the user should land on `Fraud Check Stub` page
+    When the user completes Fraud Check Stub
+    Then the user should land on `Answer Security Questions` page
 ##    Then the confirmation is created in S3 (Backend test)
 #  Then the user lands on `KBV CRI` page
 ##  PHASE 4: KBV
+    When the user clicks `Continue` on `Answer Security Questions` page
+    Then the user is shown the First Question
+    When the user selects the correct answer and clicks `Continue`
+    Then the user is shown the Second Question
+    When the user selects the second correct answer and clicks `Continue`
+    Then the user should be on `You have successfully proved your identity` page
 
 
 
 #    #fraud cri test + Check TxMA
 #    #kbv cri test + Check TxMA
 #    #Check SPOT response (in AWS)
+
+
