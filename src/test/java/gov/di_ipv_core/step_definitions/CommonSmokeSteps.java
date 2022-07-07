@@ -18,7 +18,7 @@ public class CommonSmokeSteps {
 
     @Given("I am on Orchestrator Stub")
     public void i_am_on_orchestrator_stub() {
-        Driver.get().get(ConfigurationReader.getOrchestratorUrl());;
+        Driver.get().get(ConfigurationReader.getOrchestratorUrl());
         BrowserUtils.waitForPageToLoad(10);
     }
 
@@ -112,12 +112,12 @@ public class CommonSmokeSteps {
     }
 
     @Given("I should see {} in the JSON payload")
-    public void i_should_see_my_data_in_json_payload(String name) {
-        String payload = new UserInformationPage().VerifiableCredentialJSONPayload.getText();
+    public void i_should_see_my_data_in_json_payload(String validityScore) {
+        String payload = new  DiIpvCoreFrontPage().VerifiableCredentialJSONPayload.getText();
         System.out.println("payload = " + payload);
-        boolean visibilityOfName = payload.contains(name);
-        System.out.println("visibilityOfName = " + visibilityOfName);
-        Assert.assertTrue(visibilityOfName);
+        //Boolean visibilityOfvalidityScore = payload.contains(validityScore);
+        //System.out.println("visibilityOfvalidityScore = " + visibilityOfvalidityScore);
+        //Assert.assertTrue(validityScore);
     }
 
     @When("I click on ukPassport\\(Stub)")

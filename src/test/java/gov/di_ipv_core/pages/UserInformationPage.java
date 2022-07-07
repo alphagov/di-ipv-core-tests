@@ -10,9 +10,8 @@ public class UserInformationPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(xpath = "//*[@id=\"main-content\"]/div[3]/div/dl/div/dd/details/summary/span")
+    @FindBy(xpath = "/html/body/div/main/div/div/dl[3]/div/dd/pre")
     public WebElement VerifiableCredential;
 
-    @FindBy(xpath = "//*[@id=\"main-content\"]/div[3]/div/dl/div/dd/details/div/pre")
-    public WebElement VerifiableCredentialJSONPayload;
+
 }

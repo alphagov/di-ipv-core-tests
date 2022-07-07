@@ -10,6 +10,7 @@ public class YouHaveSignedInToYourGOVUKAccountPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(xpath = "//a[@class='govuk-button']")
+    @FindBy(id = "nextSubmit")
+    //@FindBy(xpath = "//a[@class='govuk-button']")
     public WebElement Continue;
 }
