@@ -4,26 +4,11 @@ import gov.di_ipv_core.pages.*;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.cs.Ale;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import software.amazon.awssdk.core.ResponseBytes;
 import software.amazon.awssdk.core.retry.backoff.BackoffStrategy;
 import software.amazon.awssdk.core.waiters.WaiterOverrideConfiguration;
@@ -32,10 +17,6 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
-import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
-import org.openqa.selenium.WebDriver;
-
-import javax.swing.table.TableRowSorter;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -46,9 +27,9 @@ public class IntegrationSteps {
 
     String KennethName = "KENNETH";
     String KennethSurname = "DECERQUEIRA";
-    String KennethBirthDay = "26";
-    String KennethBirthMonth = "11";
-    String KennethBirthYear = "1964";
+    String KennethBirthDay = "23";
+    String KennethBirthMonth = "08";
+    String KennethBirthYear = "1959";
     String KennethPassportExpiryDay = "01";
     String KennethPassportExpiryMonth = "01";
     String KennethPassportExpiryYear = "2030";

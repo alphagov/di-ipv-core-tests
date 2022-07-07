@@ -12,4 +12,9 @@ public class DiIpvCoreFrontPage {
 
     @FindBy(xpath = "//input[@value='Authorize and Return']")
     public WebElement AuthorizeAndReturn;
+
+    @FindBy(xpath = "//*[@class='govuk-summary-list__value']//pre")
+    public WebElement VerifiableCredentialJSONPayload;
 }
+
+

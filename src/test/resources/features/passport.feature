@@ -11,13 +11,13 @@ Feature: Passport Test
   Scenario Outline: Passport details page happy path
     Given user enters data as a <PassportSubject>
     When user clicks on continue
-    Then user sees DCS check is complete message
+    Then I should see Kenneth in the JSON payload
     Examples:
-      |PassportSubject     |
-      |PassportSubjectHappy|
+      |PassportSubject      |
+      |PassportSubjectHappy |
 
   @passport_test
-  Scenario Outline: Invalid Passport Number
+  Scenario Outline: Passport details page unhappy path
     Given user enters data as a <PassportSubject>
     When user clicks on continue
     Then proper error message for invalid passport number should be displayed
@@ -60,3 +60,12 @@ Feature: Passport Test
     Examples:
       |PassportSubject |
       |InvalidExpiryDate|
+
+  @passport_test
+  Scenario Outline: Passport details page happy path
+    Given user enters data as a <PassportSubject>
+    When user clicks on continue
+    Then I should see Danny in the JSON payload
+    Examples:
+      |PassportSubject      |
+      |PassportSubjectHappy |

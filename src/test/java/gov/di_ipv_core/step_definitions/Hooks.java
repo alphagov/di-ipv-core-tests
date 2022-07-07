@@ -1,7 +1,6 @@
 package gov.di_ipv_core.step_definitions;
 
 import gov.di_ipv_core.utilities.ConfigurationReader;
-import gov.di_ipv_core.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
@@ -24,7 +23,7 @@ public class Hooks {
 
     @After("@integration_test")
     public void tearDown() {
-        final String BUCKET_NAME = "staging-smoke-test-sms-codes";
+        final String BUCKET_NAME = "integration-smoke-test-sms-codes";
         final String OBJECT_NAME = "+447700900222";
         S3Client s3Client = S3Client.builder().region(Region.EU_WEST_2).build();
         s3Client.deleteObject(DeleteObjectRequest
@@ -36,7 +35,7 @@ public class Hooks {
 
     @AfterAll
     public static void quitDriver() {
-        Driver.closeDriver();
+        //Driver.closeDriver();
 
     }
 }
