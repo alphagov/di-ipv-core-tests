@@ -115,9 +115,9 @@ public class CommonSmokeSteps {
     public void i_should_see_my_data_in_json_payload(String validityScore) {
         String payload = new  DiIpvCoreFrontPage().VerifiableCredentialJSONPayload.getText();
         System.out.println("payload = " + payload);
-        //Boolean visibilityOfvalidityScore = payload.contains(validityScore);
-        //System.out.println("visibilityOfvalidityScore = " + visibilityOfvalidityScore);
-        //Assert.assertTrue(validityScore);
+        Boolean visibilityOfvalidityScore = payload.contains(validityScore);
+        System.out.println("visibilityOfvalidityScore = " + visibilityOfvalidityScore);
+        Assert.assertTrue(visibilityOfvalidityScore);
     }
 
     @When("I click on ukPassport\\(Stub)")

@@ -13,6 +13,6 @@ public class AnswerSecurityQuestionsPage {
     @FindBy(xpath = "//a[@role='button']")
     public WebElement Start;
 
-    @FindBy(xpath = "//a[@class='govuk-button']")
+    @FindBy(id = "nextSubmit")
     public WebElement Continue;
 }

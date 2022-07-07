@@ -11,10 +11,12 @@ Feature: Passport Test
   Scenario Outline: Passport details page happy path
     Given user enters data as a <PassportSubject>
     When user clicks on continue
-    Then I should see Kenneth in the JSON payload
+    Then I should see 2 in the JSON payload
     Examples:
-      |PassportSubject      |
-      |PassportSubjectHappy |
+      |PassportSubject             |
+      |PassportSubjectHappyDanny   |
+      |PassportSubjectHappyKenneth |
+
 
   @passport_test
   Scenario Outline: Passport details page unhappy path
@@ -60,12 +62,3 @@ Feature: Passport Test
     Examples:
       |PassportSubject |
       |InvalidExpiryDate|
-
-  @passport_test
-  Scenario Outline: Passport details page happy path
-    Given user enters data as a <PassportSubject>
-    When user clicks on continue
-    Then I should see Danny in the JSON payload
-    Examples:
-      |PassportSubject      |
-      |PassportSubjectHappy |
