@@ -11,12 +11,13 @@ Feature: Passport Test
   Scenario Outline: Passport details page happy path
     Given user enters data as a <PassportSubject>
     When user clicks on continue
-    Then I should see 2 in the JSON payload
+    Then I should see validity score 2 in the JSON payload
+    And I should see Strength score 4 in the JSON payload
+
     Examples:
       |PassportSubject             |
       |PassportSubjectHappyDanny   |
       |PassportSubjectHappyKenneth |
-
 
   @passport_test
   Scenario Outline: Passport details page unhappy path

@@ -4,6 +4,7 @@ import gov.di_ipv_core.pages.*;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.ConfigurationReader;
 import gov.di_ipv_core.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -111,8 +112,8 @@ public class CommonSmokeSteps {
         BrowserUtils.waitForPageToLoad(10);
     }
 
-    @Given("I should see {} in the JSON payload")
-    public void i_should_see_my_data_in_json_payload(String validityScore) {
+    @Given("I should see validity score {} in the JSON payload")
+    public void i_should_see_validity_data_in_json_payload(String validityScore) {
         String payload = new  DiIpvCoreFrontPage().VerifiableCredentialJSONPayload.getText();
         System.out.println("payload = " + payload);
         Boolean visibilityOfvalidityScore = payload.contains(validityScore);
@@ -120,10 +121,27 @@ public class CommonSmokeSteps {
         Assert.assertTrue(visibilityOfvalidityScore);
     }
 
+    @Given("I should see my name {} in the JSON payload")
+    public void i_should_see_my_name_in_json_payload(String name) {
+        String payload = new  DiIpvCoreFrontPage().VerifiableCredentialJSONPayload.getText();
+        System.out.println("payload = " + payload);
+        Boolean visibilityOfname = payload.contains(name);
+        System.out.println("visibilityOfname = " + visibilityOfname);
+        Assert.assertTrue(visibilityOfname);
+    }
     @When("I click on ukPassport\\(Stub)")
     public void iClickOnUkPassportStub() {
         new IpvCoreFrontPage().UkPassport.click();
         BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @And("I should see Strength score {} in the JSON payload")
+    public void iShouldSeeStrengthScoreInTheJSONPayload(String strengthScore) {
+        String payload = new DiIpvCoreFrontPage().VerifiableCredentialJSONPayload.getText();
+        System.out.println("payload = " + payload);
+        Boolean visibilityOfstrenghtScore = payload.contains(strengthScore);
+        System.out.println("visibilityOfstrenghtScore = " + visibilityOfstrenghtScore);
+        Assert.assertTrue(visibilityOfstrenghtScore);
     }
 
 }

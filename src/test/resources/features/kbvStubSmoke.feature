@@ -12,7 +12,7 @@ Feature: Full journey on Kbv Stub
     When I click on Authorize and Return
     Then I should see User information displayed
     When I click on Verifiable Credentials
-    Then I should see Hakan in the JSON payload
+    Then I should see my name Hakan in the JSON payload
 
 
 

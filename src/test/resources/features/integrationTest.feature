@@ -1,7 +1,7 @@
 Feature: Full journey of Auth - Core - KBV -TxMA Integration
   Integration Checks (Black Box)
   KENNETH DECERQUEIRA has got a valid GOV.UK account
-  KENNETH DECERQUEIRA, dob: 23-08-1959, test dob: 18-11-1964, passport expiry: 01-01-2030
+  KENNETH DECERQUEIRA, dob: 23-08-1959, test dob: 23-08-1959, passport expiry: 01-01-2030
   Address: 8 Hadley Road, Bath, BA2 5AA
   PASSPORT_NUMBER = 321654987
   email: simulate-delivered-3@notifications.service.gov.uk
