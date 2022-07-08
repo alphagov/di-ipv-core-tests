@@ -121,13 +121,9 @@ public class CommonSmokeSteps {
         Assert.assertTrue(visibilityOfvalidityScore);
     }
 
-    @Given("I should see my name {} in the JSON payload")
-    public void i_should_see_my_name_in_json_payload(String name) {
-        String payload = new  DiIpvCoreFrontPage().VerifiableCredentialJSONPayload.getText();
-        System.out.println("payload = " + payload);
-        Boolean visibilityOfname = payload.contains(name);
-        System.out.println("visibilityOfname = " + visibilityOfname);
-        Assert.assertTrue(visibilityOfname);
+    @Given("I should see JSON payload displayed")
+    public void i_should_see_my_name_in_json_payload() {
+        Assert.assertTrue(new DiIpvCoreFrontPage().Verifiablejson.isDisplayed());
     }
     @When("I click on ukPassport\\(Stub)")
     public void iClickOnUkPassportStub() {
