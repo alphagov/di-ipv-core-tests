@@ -18,6 +18,10 @@ Feature: Passport Test
       |PassportSubject             |
       |PassportSubjectHappyDanny   |
       |PassportSubjectHappyKenneth |
+      |PassportSubjectHappySuzie   |
+      |PassportSubjectHappySandra  |
+      |PassportSubjectHappyBen     |
+      |PassportSubjectHappyAlex    |
 
   @passport_test
   Scenario Outline: Passport details page unhappy path

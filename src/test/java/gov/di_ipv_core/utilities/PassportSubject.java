@@ -3,6 +3,11 @@ package gov.di_ipv_core.utilities;
 public enum PassportSubject implements TestInput {
     PassportSubjectHappyDanny("543543543", "Smith", "Danny", "27", "08", "1995", "01", "01", "2030"),
     PassportSubjectHappyKenneth("321654987", "DECERQUEIRA", "KENNETH", "23", "08", "1959", "01", "01", "2030"),
+    PassportSubjectHappyArkil("543543900", "ALBERT", "ARKIL", "05", "10", "1943", "01", "01", "2030"),
+    PassportSubjectHappySuzie("543543542", "SHREEVE", "SUZIE", "09", "08", "1985", "01", "01", "2030"),
+    PassportSubjectHappySandra("543543541", "DRYSDALE", "SANDRA", "18", "05", "1970", "01", "01", "2030"),
+    PassportSubjectHappyBen("543543540", "OMEARA", "BEN", "05", "02", "1974", "01", "01", "2030"),
+    PassportSubjectHappyAlex("543543539", "ELEGBA", "ALEXANDRA", "21", "06", "1993", "01", "01", "2030"),
     InvalidPassportNumber("ABCDEFGHI", "DECERQUEIRA", "KENNETH", "23", "08", "1959", "01", "01", "2030"),
     InvalidfirstName("321654987", "DECERQUEIRA", "KENNE£4", "23", "08", "1959", "01", "01", "2030"),
     Invalidsurname("321654987", "DECERQ&^%3RA", "KENNETH", "23", "08", "1959", "01", "01", "2030"),
