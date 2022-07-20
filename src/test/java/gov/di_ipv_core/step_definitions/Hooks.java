@@ -1,7 +1,6 @@
 package gov.di_ipv_core.step_definitions;
 
 import gov.di_ipv_core.utilities.ConfigurationReader;
-import gov.di_ipv_core.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
@@ -36,7 +35,7 @@ public class Hooks {
 
     @AfterAll
     public static void quitDriver() {
-        Driver.closeDriver();
+        //Driver.closeDriver();
 
     }
 }
