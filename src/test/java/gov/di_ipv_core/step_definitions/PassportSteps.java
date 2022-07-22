@@ -2,9 +2,11 @@ package gov.di_ipv_core.step_definitions;
 
 import gov.di_ipv_core.pages.CoreFrontPage;
 import gov.di_ipv_core.pages.DCSCheckIsCompletePage;
+import gov.di_ipv_core.pages.EnterYourDetailsExactlyPage;
 import gov.di_ipv_core.pages.PassportPage;
 import gov.di_ipv_core.utilities.BrowserUtils;
 import gov.di_ipv_core.utilities.PassportSubject;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -63,5 +65,55 @@ public class PassportSteps {
     @Then("proper error message for invalid Expiry Date should be displayed")
     public void properErrorMessageForInvalidExpiryDateShouldBeDisplayed() {
         Assert.assertTrue(new PassportPage().InvalidExpiryDate.isDisplayed());
+    }
+
+    @Then("proper error message for could not find details is displayed")
+    public void properErrorMessageForCouldNotFindDetailsIsDisplayed() {
+        BrowserUtils.waitForPageToLoad(10);
+        Assert.assertTrue(new PassportPage().Passportnotfound.isDisplayed());
+    }
+
+    @Given("user enters invalid passport details")
+    public void userEntersInvalidPassportDetails() {
+        new EnterYourDetailsExactlyPage().PassportNumber.sendKeys("123456789");
+        new EnterYourDetailsExactlyPage().Surname.sendKeys("Testlastname");
+        new EnterYourDetailsExactlyPage().Firstname.sendKeys("Testfirstname");
+        new EnterYourDetailsExactlyPage().DayOfBirth.sendKeys("10");
+        new EnterYourDetailsExactlyPage().MonthOfBirth.sendKeys("12");
+        new EnterYourDetailsExactlyPage().YearOfBirth.sendKeys("1970");
+        new EnterYourDetailsExactlyPage().PassportExpiryDay.sendKeys("01");
+        new EnterYourDetailsExactlyPage().PassportExpiryMonth.sendKeys("01");
+        new EnterYourDetailsExactlyPage().PassportExpiryYear.sendKeys("2030");
+        BrowserUtils.waitFor(3);
+        //new EnterYourDetailsExactlyPage().Continue.click();
+        BrowserUtils.waitForPageToLoad(10);
+    }
+
+    @When("user Re-enters data as a {}")
+    public void userReEntersDataAsAPassportSubject(PassportSubject passportSubject) {
+        new PassportPage().PassportNumber.clear();
+        new PassportPage().Surname.clear();
+        new PassportPage().FirstName.clear();
+        new PassportPage().birthDay.clear();
+        new PassportPage().birthMonth.clear();
+        new PassportPage().birthYear.clear();
+        new PassportPage().PassportExpiryDay.clear();
+        new PassportPage().PassportExpiryMonth.clear();
+        new PassportPage().PassportExpiryYear.clear();
+        new PassportPage().PassportNumber.sendKeys(passportSubject.getpassportNumber());
+        new PassportPage().Surname.sendKeys(passportSubject.getsurname());
+        new PassportPage().FirstName.sendKeys(passportSubject.getgivenName());
+        new PassportPage().birthDay.sendKeys(passportSubject.getbirthDay());
+        new PassportPage().birthMonth.sendKeys(passportSubject.getbirthMonth());
+        new PassportPage().birthYear.sendKeys(passportSubject.getbirthYear());
+        new PassportPage().PassportExpiryDay.sendKeys(passportSubject.getexpiryDay());
+        new PassportPage().PassportExpiryMonth.sendKeys(passportSubject.getexpiryMonth());
+        new PassportPage().PassportExpiryYear.sendKeys(passportSubject.getexpiryYear());
+    }
+
+    @Then("proper error message for could not find details on retry is displayed")
+    public void properErrorMessageForCouldNotFindDetailsOnRetryIsDisplayed() {
+        BrowserUtils.waitForPageToLoad(10);
+        Assert.assertTrue(new PassportPage().Passportnotfoundonretry.isDisplayed());
     }
 }

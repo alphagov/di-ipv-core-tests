@@ -7,7 +7,7 @@ Feature: Passport Test
     And I click on ukPassport(Stub)
     And I should be on `Enter your details exactly as they appear on your UK passport` page
 
-  @passport_test
+  @passport_test @Smoke @Regression @PYIC-1570
   Scenario Outline: Passport details page happy path
     Given user enters data as a <PassportSubject>
     When user clicks on continue
@@ -67,3 +67,28 @@ Feature: Passport Test
     Examples:
       |PassportSubject |
       |InvalidExpiryDate|
+
+  @passport_test @PYIC-1570
+  Scenario Outline: Passport Retry Test Happy Path
+    Given user enters invalid passport details
+    When user clicks on continue
+    Then proper error message for could not find details is displayed
+    When user Re-enters data as a <PassportSubject>
+    And user clicks on continue
+    Then I should see validity score 2 in the JSON payload
+    And I should see Strength score 4 in the JSON payload
+    Examples:
+      |PassportSubject             |
+      |PassportSubjectHappyKenneth |
+
+  @passport_test @PYIC-1570
+  Scenario Outline: Passport Retry Test Invalid Passport
+    Given user enters invalid passport details
+    When user clicks on continue
+    Then proper error message for could not find details is displayed
+    When user Re-enters data as a <PassportSubject>
+    And user clicks on continue
+    Then proper error message for could not find details on retry is displayed
+    Examples:
+      |PassportSubject |
+      |InvalidPassport |

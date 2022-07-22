@@ -12,6 +12,7 @@ public enum PassportSubject implements TestInput {
     InvalidfirstName("321654987", "DECERQUEIRA", "KENNE£4", "23", "08", "1959", "01", "01", "2030"),
     Invalidsurname("321654987", "DECERQ&^%3RA", "KENNETH", "23", "08", "1959", "01", "01", "2030"),
     InvalidDateofBirth("321654987", "DECERQUEIRA", "KENNETH", "23", "13", "1959", "01", "01", "2030"),
+    InvalidPassport("123456789", "DECERQUEIRA", "KENNETH", "23", "08", "1959", "01", "01", "2030"),
     InvalidExpiryDate("321654987", "DECERQUEIRA", "KENNETH", "23", "08", "1959", "41", "01", "2030");
 
     private String passportNumber, surname, givenName, birthDay, birthMonth, birthYear, expiryDay, expiryMonth, expiryYear;

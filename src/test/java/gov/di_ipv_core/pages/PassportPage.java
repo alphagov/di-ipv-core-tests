@@ -19,8 +19,14 @@ public class PassportPage {
     @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']")
     public WebElement InvalidDOB;
 
-        @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']//*[contains(@href,'#expiryDate-day')]")
+    @FindBy(xpath = "//*[@class='govuk-error-summary error-summary']//*[@class='govuk-error-summary__body']//*[@class='govuk-list govuk-error-summary__list']//*[contains(@href,'#expiryDate-day')]")
     public WebElement InvalidExpiryDate;
+
+    @FindBy(xpath = "//*[@class='govuk-notification-banner__content']//h2")
+    public WebElement Passportnotfound;
+
+    @FindBy(xpath = "//*[@class='govuk-heading-l']")
+    public WebElement Passportnotfoundonretry;
 
     public PassportPage() {
         PageFactory.initElements(Driver.get(), this);
