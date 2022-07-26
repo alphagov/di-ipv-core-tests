@@ -116,4 +116,32 @@ public class PassportSteps {
         BrowserUtils.waitForPageToLoad(10);
         Assert.assertTrue(new PassportPage().Passportnotfoundonretry.isDisplayed());
     }
+
+    @Given("User click on ‘prove your identity another way' Link")
+    public void userClickOnProveYourIdentityAnotherWayLink() {
+        new PassportPage().proveanotherway.click();
+    }
+
+    @When("user click on Prove your identity another way radio button")
+    public void clickOnProveYourIdentityAnotherWayRadioButton() {
+        new PassportPage().proveidentityanotherway.click();
+        new PassportPage().Continue.click();
+    }
+
+    @Then("user should be redirected to Sorry there is a problem with the service")
+    public void shouldBeRedirectedToSorryThereIsAProblemWithTheService() {
+        BrowserUtils.waitForPageToLoad(10);
+        Assert.assertTrue(new PassportPage().sorrythereisproblem.isDisplayed());
+    }
+
+    @When("user click on Enter passport details to prove identity radio button")
+    public void userClickOnEnterPassportDetailsToProveIdentity() {
+        new PassportPage().enterpassportdetails.click();
+        new PassportPage().Continue.click();
+    }
+
+    @Then("User should be redirected back to passport page")
+    public void userShouldBeRedirectedBackToPassportPage() {
+        Assert.assertTrue(new EnterYourDetailsExactlyPage().PassportNumber.isDisplayed());
+    }
 }
