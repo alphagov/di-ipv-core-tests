@@ -28,6 +28,18 @@ public class PassportPage {
     @FindBy(xpath = "//*[@class='govuk-heading-l']")
     public WebElement Passportnotfoundonretry;
 
+    @FindBy(xpath = "//*[@class='govuk-inset-text']//*[contains(@href,'prove-another-way')]")
+    public WebElement proveanotherway;
+
+    @FindBy(xpath = "//*[@class='govuk-radios__item']//*[@id='proveAnotherWayRadio']")
+    public WebElement proveidentityanotherway;
+
+    @FindBy(xpath = "//*[@class='govuk-heading-l']")
+    public WebElement sorrythereisproblem;
+
+    @FindBy(xpath = "//*[@class='govuk-radios__item']//*[@id='proveAnotherWayRadio-retry']")
+    public WebElement enterpassportdetails;
+
     public PassportPage() {
         PageFactory.initElements(Driver.get(), this);
     }

@@ -92,3 +92,22 @@ Feature: Passport Test
     Examples:
       |PassportSubject |
       |InvalidPassport |
+
+  @passport_test @PYIC-1636
+  Scenario Outline: Passport Escape route unable to prove identity unhappy path
+    Given User click on ‘prove your identity another way' Link
+    When user click on Prove your identity another way radio button
+    Then user should be redirected to Sorry there is a problem with the service
+
+  @passport_test @PYIC-1636
+  Scenario Outline: Passport Escape route happy path
+    Given User click on ‘prove your identity another way' Link
+    When user click on Enter passport details to prove identity radio button
+    Then User should be redirected back to passport page
+    When user enters data as a <PassportSubject>
+    And user clicks on continue
+    Then I should see validity score 2 in the JSON payload
+    And I should see Strength score 4 in the JSON payload
+    Examples:
+      |PassportSubject             |
+      |PassportSubjectHappyDanny   |
