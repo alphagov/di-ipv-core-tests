@@ -114,7 +114,7 @@ public class PassportSteps {
     @Then("proper error message for could not find details on retry is displayed")
     public void properErrorMessageForCouldNotFindDetailsOnRetryIsDisplayed() {
         BrowserUtils.waitForPageToLoad(10);
-        Assert.assertTrue(new PassportPage().Passportnotfoundonretry.isDisplayed());
+        Assert.assertEquals("Sorry, we cannot prove your identity right now",new PassportPage().Passportnotfoundonretry.getText());
     }
 
     @Given("User click on ‘prove your identity another way' Link")
