@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.di_ipv_core.pages.IpvCoreFrontPage;
 import gov.di_ipv_core.pages.UserInformationPage;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
@@ -36,4 +35,7 @@ public class UkPassportSteps {
         Assert.assertTrue(new UserInformationPage().VerifiableCredential.isDisplayed());
     }
 
+    @Then("Then the {string} error page is displayed")
+    public void thenTheSorryWeCannotProveYourIdentityRightNowErrorPageIsDisplayed() {
+    }
 }

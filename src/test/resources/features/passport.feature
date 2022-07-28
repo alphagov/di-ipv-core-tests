@@ -138,7 +138,7 @@ Feature: Passport Test
     Then User should be redirected back to passport page
     When user Re-enters data as a <PassportSubject>
     And user clicks on continue
-    Then proper error message for could not find details on retry is displayed
+    Then Then the Sorry, we cannot prove your identity right now error page is displayed
     Examples:
       |PassportSubject             |
       |InvalidPassport             |
