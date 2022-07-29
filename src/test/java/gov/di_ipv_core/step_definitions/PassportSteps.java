@@ -111,12 +111,6 @@ public class PassportSteps {
         new PassportPage().PassportExpiryYear.sendKeys(passportSubject.getexpiryYear());
     }
 
-    @Then("proper error message for could not find details on retry is displayed")
-    public void properErrorMessageForCouldNotFindDetailsOnRetryIsDisplayed() {
-        BrowserUtils.waitForPageToLoad(10);
-        Assert.assertTrue(new PassportPage().Passportnotfoundonretry.isDisplayed());
-    }
-
     @Given("User click on ‘prove your identity another way' Link")
     public void userClickOnProveYourIdentityAnotherWayLink() {
         new PassportPage().proveanotherway.click();
@@ -143,5 +137,11 @@ public class PassportSteps {
     @Then("User should be redirected back to passport page")
     public void userShouldBeRedirectedBackToPassportPage() {
         Assert.assertTrue(new EnterYourDetailsExactlyPage().PassportNumber.isDisplayed());
+    }
+
+    @Then("Then the Sorry, we cannot prove your identity right now error page is displayed")
+    public void thenTheSorryWeCannotProveYourIdentityRightNowErrorPageIsDisplayed() {
+            BrowserUtils.waitForPageToLoad(10);
+            Assert.assertEquals("Sorry, we cannot prove your identity right now",new PassportPage().Passportnotfoundonretry.getText());
     }
 }

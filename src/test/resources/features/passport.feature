@@ -111,3 +111,34 @@ Feature: Passport Test
     Examples:
       |PassportSubject             |
       |PassportSubjectHappyDanny   |
+
+  @passport_test @PYIC-1636
+  Scenario Outline: Passport Escape Route 2nd retry Happy Path
+    Given user enters invalid passport details
+    When user clicks on continue
+    Then proper error message for could not find details is displayed
+    When User click on ‘prove your identity another way' Link
+    And user click on Enter passport details to prove identity radio button
+    Then User should be redirected back to passport page
+    When user Re-enters data as a <PassportSubject>
+    And user clicks on continue
+    Then I should see validity score 2 in the JSON payload
+    And I should see Strength score 4 in the JSON payload
+    Examples:
+      |PassportSubject             |
+      |PassportSubjectHappyDanny   |
+
+  @passport_test @PYIC-1636
+  Scenario Outline: Passport Escape Route 2nd retry Unhappy Path
+    Given user enters invalid passport details
+    When user clicks on continue
+    Then proper error message for could not find details is displayed
+    When User click on ‘prove your identity another way' Link
+    And user click on Enter passport details to prove identity radio button
+    Then User should be redirected back to passport page
+    When user Re-enters data as a <PassportSubject>
+    And user clicks on continue
+    Then Then the Sorry, we cannot prove your identity right now error page is displayed
+    Examples:
+      |PassportSubject             |
+      |InvalidPassport             |
