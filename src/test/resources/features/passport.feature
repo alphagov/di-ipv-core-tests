@@ -88,12 +88,12 @@ Feature: Passport Test
     Then proper error message for could not find details is displayed
     When user Re-enters data as a <PassportSubject>
     And user clicks on continue
-    Then proper error message for could not find details on retry is displayed
+    Then we cannot prove your identity right now error page is displayed
     Examples:
       |PassportSubject |
       |InvalidPassport |
 
-  @passport_test @PYIC-1636
+  @PYIC-1636
   Scenario Outline: Passport Escape route unable to prove identity unhappy path
     Given User click on ‘prove your identity another way' Link
     When user click on Prove your identity another way radio button
@@ -138,7 +138,7 @@ Feature: Passport Test
     Then User should be redirected back to passport page
     When user Re-enters data as a <PassportSubject>
     And user clicks on continue
-    Then Then the Sorry, we cannot prove your identity right now error page is displayed
+    Then we cannot prove your identity right now error page is displayed
     Examples:
       |PassportSubject             |
       |InvalidPassport             |

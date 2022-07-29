@@ -139,8 +139,8 @@ public class PassportSteps {
         Assert.assertTrue(new EnterYourDetailsExactlyPage().PassportNumber.isDisplayed());
     }
 
-    @Then("Then the Sorry, we cannot prove your identity right now error page is displayed")
-    public void thenTheSorryWeCannotProveYourIdentityRightNowErrorPageIsDisplayed() {
+    @Then("we cannot prove your identity right now error page is displayed")
+    public void WeCannotProveYourIdentityRightNowErrorPageIsDisplayed() {
             BrowserUtils.waitForPageToLoad(10);
             Assert.assertEquals("Sorry, we cannot prove your identity right now",new PassportPage().Passportnotfoundonretry.getText());
     }
